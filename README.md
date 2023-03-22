@@ -1,7 +1,7 @@
 # CS312-Group-Project CS312 Group Project for CSU 2023
 
-Group Members
-{
+Group Members{
+
     Kevin Truong: [email: truongak@colostate.edu]
 
     Dakota Kessinger-Soto: [email: "fill-in-your-email"],

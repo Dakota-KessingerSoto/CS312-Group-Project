@@ -6,10 +6,10 @@ Group Members{
 
     Dakota Kessinger-Soto: [email: "fill-in-your-email"],
 
-    John McFall: [email: "fill-in-your-email"],
+    John McFall: [email: "jmcf521@colostate.edu"],
 
     Anthony Sargent: [email: "fill-in-your-email"],
 
 }
 
-This README file will serves as a guide for the whole project and will outline the details, requirements and implementations of the group project. This may include things like milestone team reports and other assignment requiremnts.
+This README file will serves as a guide for the whole project and will outline the details, requirements and implementations of the group project. This may include things like milestone team reports and other assignment requirements.

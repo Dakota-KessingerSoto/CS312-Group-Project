@@ -24,6 +24,6 @@
             <p>Authors: Kevin Truong            <a href="truongak@colostate.edu">truongak@colostate.edu</a></p>
             <p>Authors: Dakota Kessinger-Sott   <a href="email@colostate.edu">email@colostate.edu</a></p>
             <p>Authors: Anthony Sargent         <a href="antsarge@colostate.edu">antsarge@colostate.edu</a></p>
-            <p>Authors: John Mcfall             <a href="email@colostate.edu">email@colostate.edu</a></p>
+            <p>Authors: John Mcfall             <a href="jmcf521@colostate.edu">jmcf521@colostate.edu</a></p>
     </footer>
 </html>

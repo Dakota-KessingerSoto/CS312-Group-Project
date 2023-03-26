@@ -4,7 +4,7 @@ Group Members{
 
     Kevin Truong: [email: truongak@colostate.edu]
 
-    Dakota Kessinger-Soto: [email: "fill-in-your-email"],
+    Dakota Kessinger-Soto: [email: dkess@colostate.edu],
 
     John McFall: [email: "fill-in-your-email"],
 

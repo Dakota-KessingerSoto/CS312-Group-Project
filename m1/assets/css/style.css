@@ -163,3 +163,12 @@ footer {
 	border-width: 3px;
 	border-left: #2c2c2c;
   }
+
+#initialForm {
+	width: 500px;
+	margin: auto;
+}
+
+#errMessage{
+	text-align: center;
+}

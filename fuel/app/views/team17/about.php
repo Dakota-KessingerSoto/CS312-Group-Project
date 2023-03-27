@@ -16,9 +16,11 @@
                     video games, language learning, and disc golf.</p>
             </article>
             <article class="member">
-                <img class="anthony" src="<?php echo Asset::get_file('anthony.jpg', 'img'); ?>" alt="Anthony's Photo" width="450" height="300">
+                <img class="anthony" src="<?php echo Asset::get_file('megray.png', 'img'); ?>" alt="Anthony's Photo" width="450" height="300">
                 <h3>Anthony Sargent</h3>
-                <p>Short biography about Member 2...</p>
+                <p>Hello I'm Anthony Sargent. I'm a junior at CSU and I'm working toward my Bachelor's in Computer Science.
+                    During my spare time I like to play video games, skateboard, watch movies, and work out.
+                </p>
             </article>
             <article class="member">
                 <img class="john" src="<?php echo Asset::get_file('john.jpg', 'img'); ?>" alt="John's Photo" width="450" height="300">

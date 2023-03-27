@@ -16,6 +16,7 @@ body {
 }
 
 main {
+	padding-top: 10px;
     padding-bottom: 60px; /* Add padding to the bottom of the main content to prevent overlap with the footer */
 }
 
@@ -62,12 +63,13 @@ nav #logo {
     position: absolute;
     top: -45px; 
     right: -40px; 
-    height: 20%;
+    height: 20%; 
 }
 
 #logo img {
     height: 100%;
 }
+
 
 .heading {
     text-align: center;
@@ -82,72 +84,68 @@ nav #logo {
     color: var(--text-color);
 }
 
-.intro {
-    margin-bottom: 20px;
-	padding-left: 10px;
+.member {
+    text-align: center;
+    margin-bottom: 40px;
+	padding-top: 10px;
 }
 
-.image img {
-    max-width: 100%;
-    height: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the image */
-    transition: box-shadow 0.3s ease; /* Smooth transition for the box-shadow on hover */
-	width: 250px;
-    height: 250px;
+
+.member img:hover {
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increases the intensity of the box-shadow on hover */
+}
+
+.member p {
+	width: 75%;
+	display: inline-block;
+}
+
+/* Dakota's custom styles */
+.member .dakota {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+	object-position: center top;
     object-fit: cover;
 }
 
-.image {
-    text-align: center;
-    margin-bottom: 20px;
+/* Anthony's custom styles */
+.member .anthony {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+	object-position: center top;
+    object-fit: cover;
 }
 
-.image img:hover {
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increases the intensity of the box-shadow on hover */
+/* John's custom styles */
+.member .john {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+	object-position: center top;
+    object-fit: cover;
 }
 
-.cta {
-    text-align: center;
-    margin-bottom: 20px;
+/* Kevin's custom styles */
+.member .kevin {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+	object-position: center top;
+    object-fit: cover;
 }
 
-.cta-button {
-    display: inline-block;
-    background-color: var(--acc1-color);
-    color: var(--acc2-color);
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.2em;
+.member h3 {
+    font-size: 1.5em;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
-.cta-button:hover {
-    background-color: var(--acc3-color);
+.member p {
+    font-size: 1em;
+    margin: 0;
 }
-
-.testimonials {
-    margin-bottom: 20px;
-	padding-left: 10px;
-}
-
-.testimonials h3 {
-    margin-bottom: 10px;
-}
-
-blockquote {
-    border-left: 5px solid var(--acc3-color);
-    padding-left: 20px;
-    font-style: italic;
-    max-width: 700px; 
-}
-
-cite {
-    display: block;
-    font-style: normal;
-    text-align: right;
-}
-
 
 footer {
 	position: fixed;
@@ -163,3 +161,5 @@ footer {
 	border-width: 3px;
 	border-left: #2c2c2c;
   }
+
+

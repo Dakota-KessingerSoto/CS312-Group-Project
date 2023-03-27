@@ -14,6 +14,9 @@
                     <li><a href="./about" >  About  </a></li>
                     <li><a href="./table" >  Table  </a></li>
                 </ul>
+				<div id="logo">
+    				<img src="<?php echo Asset::get_file('navlogo.png', 'img'); ?>" alt="Nav Bar Logo">
+				</div>
             </nav>
         </section>
         <section class="heading">

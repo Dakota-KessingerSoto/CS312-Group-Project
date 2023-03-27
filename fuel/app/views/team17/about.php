@@ -25,7 +25,7 @@
             <article class="member">
                 <img class="john" src="<?php echo Asset::get_file('john.jpg', 'img'); ?>" alt="John's Photo" width="450" height="300">
                 <h3>John McFall</h3>
-                <p>Short biography about Member 3...</p>
+                <p>Hello, I am John McFall! I am a Senior student at CSU working towards a Bachelor's Degree in Computer Science with a concentration in Networks & Security. I have lived in Colorado my whole life and I enjoy snowboarding during the winter. Some of my other interests are music, wakeboarding, and video games. I am also a member of CSU's Counter Strike Global Offensive team.</p>
             </article>
             <article class="member">
                 <img class="kevin" src="<?php echo Asset::get_file('kevin.jpg', 'img'); ?>" alt="Kevin's Photo" width="450" height="300">

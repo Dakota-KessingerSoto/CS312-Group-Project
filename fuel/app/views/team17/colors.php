@@ -33,6 +33,8 @@
             }
             ?>
             </table>
+            <br><br>
+            <a href="" class="cta-button">Print View</a>
         </main>
     </body>
 </html>

@@ -45,14 +45,22 @@ class Controller_team17 extends Controller_Template
 		if($submittedInit == "TRUE"){
 			if ($rowCheck == 'true' && $colorCheck == 'true'){
 				$data['val'] = "TRUE";
+				$data['rowCnt'] = $rowCount;
+				$data['colorCnt'] = $colorCount;
+				$this->template->style = ('style.css');
+				$this->template->heading = ('Team Colors Page');
+				$this->template->content = View::forge('team17/colors', $data);
 			} else {
 				$data['val'] = "FALSE";
+				$this->template->style = ('style.css');
+				$this->template->heading = ('Team Table Page');
+				$this->template->content = View::forge('team17/table', $data);
 			}
+		} else {
+			$this->template->style = ('style.css');
+			$this->template->heading = ('Team Table Page');
+			$this->template->content = View::forge('team17/table', $data);
 		}
-
-		$this->template->style = ('style.css');
-		$this->template->heading = ('Team Table Page');
-		$this->template->content = View::forge('team17/table', $data);
 	}
 }
 ?>

@@ -14,11 +14,11 @@
                     <li><a href="./about" >  About  </a></li>
                     <li><a href="./table" >  Table  </a></li>
                 </ul>
+            </nav>
+        </section>
 				<div id="logo">
     				<img src="<?php echo Asset::get_file('navlogo.png', 'img'); ?>" alt="Nav Bar Logo">
 				</div>
-            </nav>
-        </section>
         <section class="heading">
             <h1><?php echo $heading; ?></h1>
         </section>

@@ -1,0 +1,226 @@
+:root {
+	--back-color: white;
+	--acc1-color: #2c2c2c;
+	--acc2-color: #fff;
+	--acc3-color: #c8c1db;
+	--text-color: #202020;
+}
+
+html {
+    filter: grayscale(1);
+}
+
+body {
+	background-color: var(--back-color);
+	color: var(--text-color);
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+    width: 8.5in;
+    height: 11in;
+}
+
+main {
+    padding-bottom: 10px; /* Add padding to the bottom of the main content to prevent overlap with the footer */
+}
+
+.navbar{
+	visibility: hidden;
+}
+
+nav {
+	color: var(--acc2-color);
+	background-color: var(--acc1-color);
+    height: 0px;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	
+}
+nav li {
+	float: left;
+}
+nav li a {
+    display: block;
+    padding-top: 22px; 
+    padding-bottom: 22px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--acc2-color);
+    font-size: 20px;
+}
+
+a:hover {
+	box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.17);
+}
+
+nav #logo {
+    background-color: black;
+}
+
+#logo {
+    top: -45px; 
+    left: 50%;
+    text-align: center;
+    height: 20%;
+}
+
+#logo img {
+    height: 250px;
+    padding-bottom: -50px;
+}
+
+.heading {
+    text-align: center;
+    margin-top: -50px;
+}
+
+.heading h1 {
+    margin: 0;
+    font-size: 2em;
+    color: var(--text-color);
+}
+
+.intro {
+    margin-bottom: 20px;
+	padding-left: 10px;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the image */
+    transition: box-shadow 0.3s ease; /* Smooth transition for the box-shadow on hover */
+	width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image img:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increases the intensity of the box-shadow on hover */
+}
+
+.cta {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--acc1-color);
+    color: var(--acc2-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.cta-button:hover {
+    background-color: var(--acc3-color);
+}
+
+.testimonials {
+    margin-bottom: 20px;
+	padding-left: 10px;
+}
+
+.testimonials h3 {
+    margin-bottom: 10px;
+}
+
+blockquote {
+    border-left: 5px solid var(--acc3-color);
+    padding-left: 20px;
+    font-style: italic;
+    max-width: 700px; 
+}
+
+cite {
+    display: block;
+    font-style: normal;
+    text-align: right;
+}
+
+
+footer {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	width: 8.5in;
+	background-color: var(--acc3-color);
+	text-align: center;
+	color: var(--text-color);
+	text-decoration: none!important;
+	line-height: 0.5;
+	border-style: solid;
+	border-width: 3px;
+  }
+
+#initialForm {
+	width: 500px;
+	margin: auto;
+}
+
+#errMessage{
+	text-align: center;
+}
+
+#upper{
+    width: 90%;
+    margin: auto;
+    border: solid;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#upper td{
+    border: solid;
+}
+
+#upperLeft{
+    width: 20%;
+}
+
+#upperRight {
+    width: 80%;
+}
+
+#lower{
+    width: 90%;
+    margin: auto;
+    border: solid;
+}
+
+#lower tr {
+    width: 100%;
+}
+
+#lower td {
+    border: solid;
+}
+
+#colorSelect {
+    border-color: white;
+    border-style: hidden;
+    border-width: 0px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+#colorSelect::-ms-expand {
+    display: none;
+  }

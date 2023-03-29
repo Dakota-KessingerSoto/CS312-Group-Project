@@ -30,7 +30,10 @@
             <article class="member">
                 <img class="kevin" src="<?php echo Asset::get_file('kevin.jpg', 'img'); ?>" alt="Kevin's Photo" width="450" height="300">
                 <h3>Kevin Truong</h3>
-                <p>Short biography about Member 4...</p>
+                <p>Hey there, I'm Kevin Truong, a junior studying computer science with a minor in mathematics at Colorado State University. 
+                    With a passion for exploring new concepts and technologies in full-stack, web and mobile app development, and software engineering,
+                    I am always seeking new opportunities to expand my skills and knowledge. Alongside my studies, I have several interests that keep me
+                    busy in my free time, including music, skating, ,raving, thrift shopping, fashion, cooking and electronics tinkering.</p>
             </article>
         </section>
     </main>

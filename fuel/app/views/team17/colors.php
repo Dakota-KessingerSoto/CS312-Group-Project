@@ -6,17 +6,23 @@
         <script>
         function toggleTheme() {
             var theme = document.getElementsByTagName('link')[0];
+            var img = document.getElementsByTagName('img')[0];
             var style = '<?php echo Asset::get_file('style.css', 'css');?>';
             var printview = '<?php echo Asset::get_file('printview.css', 'css');?>';
+            var normalImg = '<?php echo Asset::get_file('navlogo.png', 'img');?>';
+            var printviewImg = '<?php echo Asset::get_file('printviewlogo.png', 'img');?>';
             
             if (theme.getAttribute('href') != printview ) {
                 theme.setAttribute('href', style);
+                img.setAttribute('src', normalImg);
             }         
   
             if (theme.getAttribute('href') == style) {
                 theme.setAttribute('href', printview);
+                img.setAttribute('src', printviewImg);
             } else {
                 theme.setAttribute('href', style);
+                img.setAttribute('src', normalImg);
             }
         }
         </script>

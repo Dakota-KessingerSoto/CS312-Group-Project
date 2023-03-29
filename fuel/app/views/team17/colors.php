@@ -3,6 +3,23 @@
     <head>
         <title>Colors Page</title>
         <meta name="description" content="Project: Colors">
+        <script>
+        function toggleTheme() {
+            var theme = document.getElementsByTagName('link')[0];
+            var style = '<?php echo Asset::get_file('style.css', 'css');?>';
+            var printview = '<?php echo Asset::get_file('printview.css', 'css');?>';
+            
+            if (theme.getAttribute('href') != printview ) {
+                theme.setAttribute('href', style);
+            }         
+  
+            if (theme.getAttribute('href') == style) {
+                theme.setAttribute('href', printview);
+            } else {
+                theme.setAttribute('href', style);
+            }
+        }
+        </script>
     </head>
     <body> 
         <main>
@@ -56,7 +73,9 @@
             ?>
             </table>
             <br><br>
-            <a href="" class="cta-button">Print View</a>
+            <section class="cta">
+                <button onclick="toggleTheme()" href class="cta-button">Print View</button>
+            </section>
         </main>
     </body>
 </html>

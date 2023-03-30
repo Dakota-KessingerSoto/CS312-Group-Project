@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Colors Page</title>
-        <meta name="description" content="Project: Colors">
+        <title>Table Page</title>
+        <meta name="description" content="Project: Table">
     </head>
     <body> 
         <main>

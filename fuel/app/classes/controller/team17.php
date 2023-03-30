@@ -47,20 +47,27 @@ class Controller_team17 extends Controller_Template
 				$data['val'] = "TRUE";
 				$data['rowCnt'] = $rowCount;
 				$data['colorCnt'] = $colorCount;
-				$this->template->style = ('style.css');
-				$this->template->heading = ('Color Picking Table');
-				$this->template->content = View::forge('team17/colors', $data);
 			} else {
 				$data['val'] = "FALSE";
-				$this->template->style = ('style.css');
-				$this->template->heading = ('Color Picking Table');
-				$this->template->content = View::forge('team17/table', $data);
 			}
-		} else {
-			$this->template->style = ('style.css');
-			$this->template->heading = ('Color Picking Table');
-			$this->template->content = View::forge('team17/table', $data);
 		}
+
+		$this->template->style = ('style.css');
+		$this->template->heading = ('Color Picking Table');
+		$this->template->content = View::forge('team17/table', $data);
+	}
+
+	public function action_printview()
+	{
+		$data = array();
+		$rowCount = $_GET['numRows'];
+		$colorCount = $_GET['numColors'];
+		$data['rowCnt'] = $rowCount;
+		$data['colorCnt'] = $colorCount;
+
+		$this->template->style = ('printview.css');
+		$this->template->heading = ('Meet Our Team');
+		$this->template->content = View::forge('team17/printview', $data);
 	}
 }
 ?>

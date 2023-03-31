@@ -6,7 +6,8 @@
     </head>
     <body> 
         <main>
-            <?php if (!isset($val)): ?>
+            <!-- Initial form for user input -->
+            <?php if (!isset($val) or $val == "FALSE"): ?>
                 <table>
                     <form id="initialForm" name="initialForm" action="table" method="get">
                     <fieldset>
@@ -18,8 +19,14 @@
                         <input type="submit" value="Submit"><br>
                     </fieldset>
                     </form>
+                    <!-- Display error message if user inputs invalid input-->
+                    <?php if (isset($val) and $val == "FALSE"): ?>
+                        <p> "Be sure to enter a number 1-26 in rows/columns and a number 1-10 in colors."; </p>
+                    <?php endif; ?>
                 </table>
+
             <?php else: ?>
+                <!-- Color picking table -->
                 <?php if ($val == "TRUE"): ?>
                     <form action="./printview" method="get">
                     <table id="upper" name="upper">
@@ -49,6 +56,8 @@
                     ?>
                     </table>
                     <br><br>
+
+                    <!-- Lower Grid Table -->
                     <table id="lower" name="lower">
                     <?php 
                         $letters= array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
@@ -68,29 +77,15 @@
                                     echo "<td></td>";
                                 }
                             }
-
                         "</tr>";
                         }
                     ?>
                     </table>
+                    <!-- Submission for when print views is clicked -->
                     <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
                     <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
                     <button type="submit" class="cta-button">Printable View</button>
                     </form>
-                <?php else: ?>
-                    <table>
-                    <form id="initialForm" name="initialForm" action="table" method="get">
-                    <fieldset>
-                        <legend>Columns/Rows and Colors</legend>
-                        <label for="numRows">Enter Row/Column Number:</label>
-                        <input type="number" id="numRows" name="numRows" placeholder="1-26"><br>
-                        <label for="numColors">Enter Colors Number:</label>
-                        <input type="number" id="numColors" name="numColors" placeholder="1-10"><br>
-                        <input type="submit" value="Submit"><br>
-                    </fieldset>
-                    </form>
-                    </table>
-                    <p> "Be sure to enter a number 1-26 in rows/columns and a number 1-10 in colors."; </p>
                 <?php endif; ?>
             <?php endif; ?>
         </main>

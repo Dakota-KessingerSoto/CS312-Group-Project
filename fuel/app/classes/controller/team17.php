@@ -62,9 +62,11 @@ class Controller_team17 extends Controller_Template
 		$data = array();
 		$rowCount = $_GET['numRows'];
 		$colorCount = $_GET['numColors'];
+		$selectedColors = $_GET['colorSelect'];
 		$data['rowCnt'] = $rowCount;
 		$data['colorCnt'] = $colorCount;
-
+		$data['selColors'] = $selectedColors;
+		
 		$this->template->style = ('printview.css');
 		$this->template->heading = ('Meet Our Team');
 		$this->template->content = View::forge('team17/printview', $data);

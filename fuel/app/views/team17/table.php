@@ -60,7 +60,6 @@
                         <br><br>
                         <!-- Check for duplicates in the color table -->
                         <script>
-                            console.log("CHANGE");
                             var previousValues = <?php echo json_encode($colors); ?>;
                             function checkDuplicates(index) {
                                 var colorSelects = document.getElementsByName("colorSelect[]");

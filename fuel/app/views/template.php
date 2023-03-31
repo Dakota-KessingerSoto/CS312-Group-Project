@@ -7,21 +7,17 @@
 </head>
 <body>
     <header>
-        <section class="navbar">
+        <div class="navbar">
             <nav>
-                <ul>
-                    <li><a href="./index" >  Home  </a></li>
-                    <li><a href="./about" >  About  </a></li>
-                    <li><a href="./table" >  Table  </a></li>
-                </ul>
-            </nav>
-        </section>
-				<div id="logo">
-    				<img src="<?php echo Asset::get_file('navlogo.png', 'img'); ?>" alt="Nav Bar Logo">
-				</div>
-        <section class="heading">
+            <div id="nav_links">
+                <a href="./index" >  Home  </a>
+                <a href="./about" >  About  </a>
+                <a href="./table" >  Table  </a>
+            </div>
+            <img src="<?php echo Asset::get_file('navlogo.png', 'img'); ?>" alt="Nav Bar Logo">
             <h1><?php echo $heading; ?></h1>
-        </section>
+            </nav>
+        </div>
     </header>
     <main>
         <?php echo $content; ?>

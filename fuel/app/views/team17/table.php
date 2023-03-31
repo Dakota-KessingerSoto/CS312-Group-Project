@@ -29,33 +29,55 @@
                 <!-- Color picking table -->
                 <?php if ($val == "TRUE"): ?>
                     <form action="./printview" method="get">
-                    <table id="upper" name="upper">
-                    <?php 
-                        for ($x=0; $x<$colorCnt;$x++){
-                            echo "
-                            <tr>
-                                <td id=\"upperLeft\" name=\"upperLeft\">
-                                    <select name=\"colorSelect[]\" id=\"colorSelect{$x}\">
-                                        <option value=\"red\"";     if($x==0){echo "selected";} echo ">Red      </option>
-                                        <option value=\"orange\"";  if($x==1){echo "selected";} echo ">Orange   </option>
-                                        <option value=\"yellow\"";  if($x==2){echo "selected";} echo ">Yellow   </option>
-                                        <option value=\"green\"";   if($x==3){echo "selected";} echo ">Green    </option>
-                                        <option value=\"blue\"";    if($x==4){echo "selected";} echo ">Blue     </option>
-                                        <option value=\"purple\"";  if($x==5){echo "selected";} echo ">Purple   </option>
-                                        <option value=\"grey\"";    if($x==6){echo "selected";} echo ">Grey     </option>
-                                        <option value=\"brown\"";   if($x==7){echo "selected";} echo ">Brown    </option>
-                                        <option value=\"black\"";   if($x==8){echo "selected";} echo ">Black    </option>
-                                        <option value=\"teal\"";    if($x==9){echo "selected";} echo ">Teal     </option>
-                                    </select>
-                                </td>
-                                <td id=\"upperRight\" name=\"upperRight\">
-                                    Right Column No Instructions Yet!
-                                </td>
-                            </tr>
-                            ";}
-                    ?>
-                    </table>
-                    <br><br>
+                        <table id="upper" name="upper">
+                        <?php 
+                            $colors = ["red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal"];
+                            for ($x=0; $x<$colorCnt;$x++){
+                                echo "
+                                <tr>
+                                    <td id=\"upperLeft\" name=\"upperLeft\">
+                                        <select name=\"colorSelect[]\" id=\"colorSelect{$x}\" onchange=\"checkDuplicates({$x})\">
+                                            <option value=\"red\"";     if($x==0){echo "selected";} echo ">Red      </option>
+                                            <option value=\"orange\"";  if($x==1){echo "selected";} echo ">Orange   </option>
+                                            <option value=\"yellow\"";  if($x==2){echo "selected";} echo ">Yellow   </option>
+                                            <option value=\"green\"";   if($x==3){echo "selected";} echo ">Green    </option>
+                                            <option value=\"blue\"";    if($x==4){echo "selected";} echo ">Blue     </option>
+                                            <option value=\"purple\"";  if($x==5){echo "selected";} echo ">Purple   </option>
+                                            <option value=\"grey\"";    if($x==6){echo "selected";} echo ">Grey     </option>
+                                            <option value=\"brown\"";   if($x==7){echo "selected";} echo ">Brown    </option>
+                                            <option value=\"black\"";   if($x==8){echo "selected";} echo ">Black    </option>
+                                            <option value=\"teal\"";    if($x==9){echo "selected";} echo ">Teal     </option>
+                                        </select>
+                                    </td>
+                                    <td id=\"upperRight\" name=\"upperRight\">
+                                        Right Column No Instructions Yet!
+                                    </td>
+                                </tr>
+                                ";
+                            }
+                        ?>
+                        </table>
+                        <br><br>
+                        <!-- Check for duplicates in the color table -->
+                        <script>
+                            console.log("CHANGE");
+                            var previousValues = <?php echo json_encode($colors); ?>;
+                            function checkDuplicates(index) {
+                                var colorSelects = document.getElementsByName("colorSelect[]");
+                                var selectedColor = colorSelects[index].value;
+                                for (var i = 0; i < colorSelects.length; i++) {
+                                    if (i !== index && colorSelects[i].value === selectedColor) {
+                                        colorSelects[index].style.color = "red";
+                                        setTimeout(() => {
+                                            colorSelects[index].style.color = "black";
+                                            colorSelects[index].value = previousValues[index];
+                                        }, 500);
+                                        return;
+                                    }
+                                }
+                                previousValues[index] = selectedColor;
+                            }
+                        </script>
 
                     <!-- Lower Grid Table -->
                     <table id="lower" name="lower">

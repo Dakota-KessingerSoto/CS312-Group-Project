@@ -101,6 +101,10 @@ nav h1 {
     flex: 1;
 }
 
+.member div {
+    width: 100%;
+}
+
 /* ------- home page ------- */
 * main {
     margin: 0px 100px;

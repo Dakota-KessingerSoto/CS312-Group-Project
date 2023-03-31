@@ -10,9 +10,9 @@
         <div class="navbar">
             <nav>
             <div id="nav_links">
-                <a href="./index" >  Home  </a>
-                <a href="./about" >  About  </a>
                 <a href="./table" >  Table  </a>
+                <a href="./about" >  About  </a>
+                <a href="./index" >  Home  </a>
             </div>
             <img src="<?php echo Asset::get_file('navlogo.png', 'img'); ?>" alt="Nav Bar Logo">
             <h1><?php echo $heading; ?></h1>

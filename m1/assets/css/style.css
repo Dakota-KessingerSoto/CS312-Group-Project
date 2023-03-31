@@ -169,7 +169,7 @@ cite {
     margin: auto;
     border: solid;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 #upper td{
@@ -207,8 +207,12 @@ cite {
     border-radius: 5px;
     font-size: 1.2em;
     display: block;
-    margin: 50px 300px;
     text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
 
 }
 

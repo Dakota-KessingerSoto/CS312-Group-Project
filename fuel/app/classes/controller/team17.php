@@ -24,22 +24,27 @@ class Controller_team17 extends Controller_Template
 		$data = array();
 
 		$submittedInit = "FALSE";
-		if (isset($_GET['numRows'])){
+		if (isset($_POST['numRows'])){
 			$submittedInit = "TRUE";
 			$rowCheck = 'false';
-			$rowCount = $_GET['numRows'];
+			$rowCount = $_POST['numRows'];
 			if(is_numeric($rowCount) && $rowCount > 0 && $rowCount < 27){
 				$rowCheck = 'true';
 			}
 		}
 
-		if (isset($_GET['numColors'])){
+		if (isset($_POST['numColors'])){
 			$submittedInit = "TRUE";
 			$colorCheck = 'false';
-			$colorCount = $_GET['numColors'];
+			$colorCount = $_POST['numColors'];
 			if(is_numeric($colorCount) && $colorCount > 0 && $colorCount < 11){
 				$colorCheck = 'true';
 			}
+		}
+
+		if (isset($_POST['colorSelect'])){
+			$selectedColors = $_POST['colorSelect'];
+			$data['selColors'] = $selectedColors;
 		}
 
 		if($submittedInit == "TRUE"){

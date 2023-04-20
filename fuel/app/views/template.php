@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="keywords" content="HTML,CSS,JavaScript,PHP">
+    <?php echo Asset::css('style.css'); ?>
     <?php echo Asset::css($style); ?>
 </head>
 <body>

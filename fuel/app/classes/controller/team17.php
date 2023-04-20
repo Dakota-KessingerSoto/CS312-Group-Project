@@ -5,7 +5,7 @@ class Controller_team17 extends Controller_Template
 	public function action_index()
 	{
         $data = array();
-		$this->template->style = ('style.css');
+		$this->template->style = ('home.css');
 		$this->template->heading = ('ColorPalettePro Homepage');
 		$this->template->content = View::forge('team17/index', $data);
 	}
@@ -14,7 +14,7 @@ class Controller_team17 extends Controller_Template
 	public function action_about()
 	{
 		$data = array();
-		$this->template->style = ('style.css');
+		$this->template->style = ('about.css');
 		$this->template->heading = ('Meet Our Team');
 		$this->template->content = View::forge('team17/about', $data);
 		
@@ -52,24 +52,9 @@ class Controller_team17 extends Controller_Template
 			}
 		}
 
-		$this->template->style = ('style.css');
+		$this->template->style = ('table.css');
 		$this->template->heading = ('Color Picking Table');
 		$this->template->content = View::forge('team17/table', $data);
-	}
-
-	public function action_printview()
-	{
-		$data = array();
-		$rowCount = $_GET['numRows'];
-		$colorCount = $_GET['numColors'];
-		$selectedColors = $_GET['colorSelect'];
-		$data['rowCnt'] = $rowCount;
-		$data['colorCnt'] = $colorCount;
-		$data['selColors'] = $selectedColors;
-		
-		$this->template->style = ('printview.css');
-		$this->template->heading = ('Meet Our Team');
-		$this->template->content = View::forge('team17/printview', $data);
 	}
 }
 ?>

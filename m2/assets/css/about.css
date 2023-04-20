@@ -1,0 +1,33 @@
+/* ------- about page ------- */
+
+main {
+    margin-top: 0px;
+}
+.member {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.member img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-right: 50px;
+}
+
+.member h3 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: -10px;
+}
+
+.member p {
+    text-align: center;
+    flex: 1;
+}
+
+.member div {
+    width: 100%;
+}

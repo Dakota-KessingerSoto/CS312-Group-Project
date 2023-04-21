@@ -33,6 +33,18 @@
             echo "<h1> ColorPalettePro </h1>";
         }
     ?>
+    <!-- Print View Color Picking Table -->
+    <?php if (isset($selColors)&&isset($colChoice)): ?>
+        <table class="print-color-table">
+            <?php
+            for ($row=0; $row<$colorCnt ;$row++){
+                echo "<tr><td>$selColors[$row]</td><td>$colChoice[$row]</td></tr>";
+            }
+            ?>
+        </table>
+    <?php endif; ?>
+
+
     <!-- Color Picking Table -->
     <form method="POST">
     <table class="color-table">
@@ -48,27 +60,18 @@
             $index += 1;
         } $index = 0; 
         echo "</select></td>";
-        if ($row==0){
-            echo "<td><input type=\"radio\" name=\"colored_cells[]\" id=\"colored_cells{$row}\" checked>";
+        $choice_num = $row;
+        if ($choice_num==0){
+            echo "<td><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\" checked>";
         } else {
-            echo "<td><input type=\"radio\" name=\"colored_cells[]\" id=\"colored_cells{$row}\">";
+            echo "<td><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\">";
         }
+        echo "<label for = {$choice_num}choice></label><input type=\"hidden\" name=\"colorChoice[]\" value = \"foobar\"</td>";
         echo "</tr>";
     }
     ?>
 
-    <!-- Print View Color Picking Table -->
-    <?php if (isset($selColors)): ?>
-        <table class="print-color-table">
-            <?php
-            for ($row=0; $row<$colorCnt ;$row++){
-                echo "<tr><td>$selColors[$row]</td><td id=\"upperRight\" name=\"upperRight\">Right Column No Instructions Yet!</td></tr>";
-            }
-            ?>
-        </table>
-    <?php endif; ?>
-
-
+    
     <!-- Main Drawing Table -->
     <table class="draw-table">
     <?php 
@@ -76,27 +79,19 @@
     for ($row = 0; $row <= $rowCnt; $row++){
         echo "<tr>";
             for ($col = 1; $col <= $rowCnt; $col++) {
-                if ($col==1) {
-                    if ($row==0) {
-                        echo "<td id=\"title\"></td>";
-                    } else {
-                        echo "<td id=\"title\">$row</td>";
-                    }
-                }
-                if ($row == 0) {
-                    echo "<td id=\"title\">$letters[$col]</td>";
-                } else {
+                // Print labels for table
+                if ($col==1) { if ($row==0) { echo "<td id=\"title\"></td>"; } else { echo "<td id=\"title\">$row</td>"; } }
+                if ($row == 0) { echo "<td id=\"title\">$letters[$col]</td>"; } else {
+                    // Create empty cells with identifiable cell id
                     echo "<td id=\"$row$letters[$col]\"></td>";
-                }
-            }
-        echo "</tr>";
-    }
+                } }
+        echo "</tr>";}
     ?>
     </table>
-    
         <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
         <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
         <button type="submit" name="printview-button" class="printview-button">Print View</button>
     </form>
+    
 <?php endif; ?>
 

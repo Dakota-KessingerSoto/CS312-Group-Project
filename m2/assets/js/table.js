@@ -1,12 +1,12 @@
 $(document).ready(function() {
-
+    if($('html').css('filter')!="grayscale(1)"){
+    // When dropdown value change check for dulication and restore if not---------
     // Get previous value in fown down menu by lisiting for mousedown event
     var prevValue;
     $('select[name="colorSelect[]"]').mousedown(function() {
         prevValue = $(this).val();
     });
-
-    // When dropdown value change check for dulication and restore if not
+    
     $('select[name="colorSelect[]"]').change( function() {
         // Check if it is already been chosen and warn then change back
         var newValue = $(this);
@@ -33,13 +33,13 @@ $(document).ready(function() {
         }
     });
     
-    // Detect if radio button is changed and set change to selected color
+    // Detect if radio button is changed and set change to selected color--------
     var selectedColor = "red";
     $('input[type="radio"]').change(function() {
         selectedColor = $(this).closest('tr').find('select').val();
     });
 
-    // Main table click detection and drawing
+    // Detect when cell in main table is click and change color to selected color-------
     $('.draw-table td').click(function() {
         var row = $(this).parent().index() + 1;
         var col = $(this).index() + 1;
@@ -47,6 +47,43 @@ $(document).ready(function() {
             $(this).css('background-color', selectedColor);
         }
     });
+
+
+    // Detect when cell in main table is click and add cordinate to radio-------
+    var color_count = $('.color-table tbody tr').length-1;
+    let cordinates = Array.from(Array(color_count), () => new Set());
+    $('.draw-table td').click(function() {
+        //var selected_choice = $('input[type="radio"]:checked').closest('td').find('label').text();
+        // everytime a cell is colored add it to an array for its selected color
+        var selected_choice = $('input[type="radio"]:checked').attr('value');
+        var choice_num = parseInt(selected_choice, 10);
+        var cord = $(this).attr('id');
+        
+        // Check if cordinate was already in different choice cell and remove it
+        for(let i=0; i<cordinates.length; i++){
+            for(let element of cordinates[i]){
+                if (element==cord){
+                    cordinates[i].delete(element);
+                }
+            }
+        }
+        
+        // Add clicked cordnate to selected color choice
+        cordinates[choice_num].add(cord);
+
+        // Change label to reflect changes
+        var newLabel = "";
+        $("input[type='radio']").each(function(i) {
+            cordinates[i] = sortSet(cordinates[i]);
+            for(let element of cordinates[i]){
+                newLabel = newLabel+element+" ";
+            }
+            $(this).closest('td').find('label').text(newLabel);
+            $(this).closest('td').find("input[type='hidden'").val(newLabel);
+            newLabel = "";
+        });
+    });
+    }
 });
 
 function colorNameToRgb(colorName) {
@@ -58,5 +95,11 @@ function colorNameToRgb(colorName) {
     dummy.remove();
     // return the RGB color as a string
     return colorRgb;
-  }
+}
+
+function sortSet(set) {
+    const sortedArray = [...set]
+    sortedArray.sort();
+    return new Set(sortedArray);
+}
   

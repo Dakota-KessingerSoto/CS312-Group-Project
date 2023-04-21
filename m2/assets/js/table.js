@@ -1,12 +1,12 @@
 $(document).ready(function() {
-
+    if($('html').css('filter')!="grayscale(1)"){
+    // When dropdown value change check for dulication and restore if not---------
     // Get previous value in fown down menu by lisiting for mousedown event
     var prevValue;
     $('select[name="colorSelect[]"]').mousedown(function() {
         prevValue = $(this).val();
     });
-
-    // When dropdown value change check for dulication and restore if not
+    
     $('select[name="colorSelect[]"]').change( function() {
         // Check if it is already been chosen and warn then change back
         var newValue = $(this);
@@ -33,7 +33,7 @@ $(document).ready(function() {
         }
     });
     
-    // Detect if radio button is changed and set change to selected color
+    // Detect if radio button is changed and set change to selected color--------
     var selectedColor = "red";
     $('input[type="radio"]').change(function() {
         selectedColor = $(this).closest('tr').find('select').val();
@@ -95,5 +95,11 @@ function colorNameToRgb(colorName) {
     dummy.remove();
     // return the RGB color as a string
     return colorRgb;
-  }
+}
+
+function sortSet(set) {
+    const sortedArray = [...set]
+    sortedArray.sort();
+    return new Set(sortedArray);
+}
   

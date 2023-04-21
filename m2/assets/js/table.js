@@ -35,12 +35,12 @@ $(document).ready(function() {
     
     // Detect if radio button is changed and set change to selected color--------
     var selectedColor = "red";
-    $('input[type="radio"]').change(function() {
+    $('input[type="radio"]').click(function() {
         selectedColor = $(this).closest('tr').find('select').val();
     });
 
     // Detect when cell in main table is click and change color to selected color-------
-    $('.draw-table td').hover(function() {
+    $('.draw-table td').click(function() {
         var row = $(this).parent().index() + 1;
         var col = $(this).index() + 1;
         if($(this).attr('id')!="title"){

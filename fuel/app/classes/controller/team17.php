@@ -47,6 +47,11 @@ class Controller_team17 extends Controller_Template
 			$data['selColors'] = $selectedColors;
 		}
 
+		if (isset($_POST['colorChoice'])){
+			$selectedColors = $_POST['colorChoice'];
+			$data['colChoice'] = $selectedColors;
+		}
+
 		if($submittedInit == "TRUE"){
 			if ($rowCheck == 'true' && $colorCheck == 'true'){
 				$data['val'] = "TRUE";

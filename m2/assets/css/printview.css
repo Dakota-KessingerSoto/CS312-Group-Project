@@ -13,7 +13,7 @@ html {
 body, main{
 	background-color: var(--back-color);
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-	font-size: 10px;
+	font-size: 13px;
 	color: var(--text-color);
 	margin: 0;
 	padding: 0;

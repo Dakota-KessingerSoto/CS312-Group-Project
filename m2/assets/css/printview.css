@@ -1,0 +1,83 @@
+:root {
+	--back-color: #fefae8;
+	--acc1-color: #2c2c2c;
+	--acc2-color: #fff;
+	--acc3-color: #17a0a9;
+	--text-color: #202020;
+}
+
+html {
+    filter: grayscale(1);
+}
+
+body, main{
+	background-color: var(--back-color);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 13px;
+	color: var(--text-color);
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+    width: 8.5in!important;
+    height: 11in!important;
+}
+
+.navbar, header, table.color-table, .printview-button{
+	display: none;
+}
+
+.print-color-table{
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    border: solid;
+    text-align: center;
+    border-collapse: collapse;
+    border: 5px solid black;
+}
+
+.print-color-table td, .draw-table td {
+    border: 5px solid black;
+    height: 10px;
+}
+
+.print-color-table tbody tr td:first-child{
+    width: 75px;
+}
+
+img{
+    float: left;
+    height: 2.5in;
+    width:  2.5in;
+    margin-left: 1in;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+h1 {
+    float: right;
+    position: 0;
+    margin-top: 130px;
+	margin-right: 1.5in;
+	font-size: 30px;
+}
+
+
+footer {
+	position: static;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: var(--acc3-color);
+	text-align: center;
+	color: var(--text-color);
+	text-decoration: none!important;
+	line-height: 0.5;
+	border-style: solid;
+	border-width: 3px;
+	border-left: #2c2c2c;
+}
+
+/* ------- table print view ------- */
+
+

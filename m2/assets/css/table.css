@@ -1,0 +1,102 @@
+/* ------- table print view ------- */
+
+.initialForm {
+	width: 100px;
+	margin: auto;
+    margin-top: 50px;
+}
+
+.errMessage{
+    color: darkred;
+	text-align: center;
+}
+
+.upper{
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+    border: solid;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.upper td{
+    border: solid;
+}
+
+.upperLeft{
+    width: 20%;
+}
+
+.upperRight {
+    width: 80%;
+}
+
+
+main {
+    min-height: 500px;
+}
+
+.color-table{
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    border: solid;
+    text-align: center;
+    border-collapse: collapse;
+    border: 5px solid black;
+}
+
+.color-table td, .draw-table td {
+    border: 5px solid black;
+    height: 30px;
+}
+
+.color-table tbody tr td:first-child{
+    width: 75px;
+}
+
+.draw-table{
+    margin: auto;
+    margin-top: 50px;
+    width: 90%;
+    border: solid;
+    text-align: center;
+    border-collapse: collapse;
+    border: 5px solid black;
+}
+
+.draw-table td, .draw-table td {
+    border: 5px solid black;
+    width: 50px;
+    height: 50px;
+}
+
+.draw-table tbody tr:first-child{
+    height: 10px!important;
+}
+
+.draw-table tbody tr td:first-child{
+    width: 10px!important;
+}
+
+.printview-button {
+    background-color: var(--acc1-color);
+    color: var(--acc2-color);
+    text-decoration: none;
+    padding: 20px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+
+}
+
+.printview-button:hover {
+    background-color: var(--acc3-color);
+}

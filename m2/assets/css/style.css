@@ -1,0 +1,79 @@
+:root {
+	--back-color: #fefae8;
+	--acc1-color: #2c2c2c;
+	--acc2-color: #fff;
+	--acc3-color: #17a0a9;
+	--text-color: #202020;
+}
+
+body {
+	background-color: var(--back-color);
+	color: var(--text-color);
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+
+* main {
+    margin: 0px 200px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+
+footer {
+	position: static;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: var(--acc3-color);
+	text-align: center;
+	color: var(--text-color);
+	text-decoration: none!important;
+	line-height: 0.5;
+	border-style: solid;
+	border-width: 3px;
+	border-left: #2c2c2c;
+  }
+
+/* ----------- navagation bar syyle -------*/
+nav {
+    background-color: #333;
+    overflow: hidden;
+    height: 150px;
+}
+
+#nav_links {
+    margin-right: 100px;
+}
+nav a {
+    margin-top: 70px;
+    float: right;
+    color: #fff;
+    padding: 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+nav a:hover {
+    color: gray;
+}
+
+nav img {
+    padding: 20px;
+    height: 110px;
+    float: left;
+    background-color: transparent;
+    color: white;
+}
+nav h1 {
+    float: left;
+    color: white;
+    margin-left: 50px;
+    margin-top: 80px;
+    font-size: 40px;
+}
+

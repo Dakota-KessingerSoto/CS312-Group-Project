@@ -85,7 +85,7 @@
     <form method="POST">
     <table class="color-table">
     <?php 
-    echo "<tr><td> Colors </td><td> Choice </td></tr>";
+    echo "<tr><td> Colors </td><td> Choice </td><td> Coordinates </tr>";
     for ($row = 0; $row < $colorCnt; $row++){
         // Create drop down menu with each color
         echo "<tr><td><select name=\"colorSelect[]\" id=\"colorSelect{$row}\">";
@@ -97,11 +97,11 @@
         echo "</select></td>";
         $choice_num = $row;
         if ($choice_num==0){
-            echo "<td><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\" checked>";
+            echo "<td class=\"select_col\"><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\" checked></td>";
         } else {
-            echo "<td><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\">";
+            echo "<td class=\"select_col\"><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\"></td>";
         }
-        echo "<label for = {$choice_num}choice></label><input type=\"hidden\" name=\"colorChoice[]\" value = \"\"</td>";
+        echo "<td class=\"cords\"><input type=\"hidden\" name=\"colorChoice[]\" value=\"\"><label></label></td>";
         echo "</tr>";
     }
     ?>

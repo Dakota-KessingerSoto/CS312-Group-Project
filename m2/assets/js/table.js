@@ -77,8 +77,8 @@ $(document).ready(function() {
                 for(let element of cordinates[i]){
                     newLabel = newLabel+element+" ";
                 }
-                $(this).closest('td').find('label').text(newLabel);
-                $(this).closest('td').find("input[type='hidden'").val(newLabel);
+                $(this).closest('tr').find("td.cords input[type='hidden']").val(newLabel);
+                $(this).closest('tr').find('td.cords label').text(newLabel);
                 newLabel = "";
             });
         }

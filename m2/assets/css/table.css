@@ -89,7 +89,10 @@ main {
 }
 
 .color-table tbody tr td:first-child{
-    width: 75px;
+    width: 200px;
+}
+.color-table tbody tr td.select_col{
+    width: 200px;
 }
 
 .draw-table {

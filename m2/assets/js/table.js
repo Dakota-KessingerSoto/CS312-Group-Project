@@ -52,36 +52,36 @@ $(document).ready(function() {
     // Detect when cell in main table is click and add cordinate to radio-------
     var color_count = $('.color-table tbody tr').length-1;
     let cordinates = Array.from(Array(color_count), () => new Set());
-    $('.draw-table td').hover(function() {
-        //var selected_choice = $('input[type="radio"]:checked').closest('td').find('label').text();
+    $('.draw-table td').click(function() {
         // everytime a cell is colored add it to an array for its selected color
         var selected_choice = $('input[type="radio"]:checked').attr('value');
         var choice_num = parseInt(selected_choice, 10);
         var cord = $(this).attr('id');
-        
-        // Check if cordinate was already in different choice cell and remove it
-        for(let i=0; i<cordinates.length; i++){
-            for(let element of cordinates[i]){
-                if (element==cord){
-                    cordinates[i].delete(element);
+        if($(this).attr('id')!="title"){
+            // Check if cordinate was already in different choice cell and remove it
+            for(let i=0; i<cordinates.length; i++){
+                for(let element of cordinates[i]){
+                    if (element==cord){
+                        cordinates[i].delete(element);
+                    }
                 }
             }
-        }
-        
-        // Add clicked cordnate to selected color choice
-        cordinates[choice_num].add(cord);
+            
+            // Add clicked cordnate to selected color choice
+            cordinates[choice_num].add(cord);
 
-        // Change label to reflect changes
-        var newLabel = "";
-        $("input[type='radio']").each(function(i) {
-            cordinates[i] = sortSet(cordinates[i]);
-            for(let element of cordinates[i]){
-                newLabel = newLabel+element+" ";
-            }
-            $(this).closest('td').find('label').text(newLabel);
-            $(this).closest('td').find("input[type='hidden'").val(newLabel);
-            newLabel = "";
-        });
+            // Change label to reflect changes
+            var newLabel = "";
+            $("input[type='radio']").each(function(i) {
+                cordinates[i] = sortSet(cordinates[i]);
+                for(let element of cordinates[i]){
+                    newLabel = newLabel+element+" ";
+                }
+                $(this).closest('tr').find("td.cords input[type='hidden']").val(newLabel);
+                $(this).closest('tr').find('td.cords label').text(newLabel);
+                newLabel = "";
+            });
+        }
     });
     }
 });

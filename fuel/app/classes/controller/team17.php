@@ -22,7 +22,8 @@ class Controller_team17 extends Controller_Template
 	public function action_table()
 	{
 		$data = array();
-
+		$color = array("red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal");
+		$data['colors_choices'] = $color;
 		$submittedInit = "FALSE";
 		if (isset($_POST['numRows'])){
 			$submittedInit = "TRUE";

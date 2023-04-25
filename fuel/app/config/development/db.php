@@ -19,12 +19,12 @@
  *
  */
 
-return array(
+ return array(
 	'default' => array(
-		'connection' => array(
-			'dsn'      => 'mysql:host=localhost;dbname=fuel_dev',
-			'username' => 'root',
-			'password' => 'root',
+		'connection'  => array(
+			'dsn'        => 'mysql:host=faure.cs.colostate.edu;dbname=jmcf521',
+			'username'   => 'jmcf521',
+			'password'   => '832435619',
 		),
 	),
 );

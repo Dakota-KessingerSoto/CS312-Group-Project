@@ -24,7 +24,7 @@ class Controller_team17 extends Controller_Template
 	{
 		$data = array(
 			'colors' => ColorDBModel::read_colors(),
-            'coor_count' => ColorDBModel::color_count()
+            'color_count' => ColorDBModel::color_count()
 		);
 
 		$submittedInit = "FALSE";

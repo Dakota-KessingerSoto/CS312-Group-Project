@@ -37,7 +37,8 @@ main {
     min-height: 500px;
 }
 
-.color-table{
+
+.action-table {
     margin: auto;
     margin-top: 50px;
     width: 80%;
@@ -47,7 +48,42 @@ main {
     border: 5px solid black;
 }
 
-.color-table td, .draw-table td {
+.action-table td {
+    border: 5px solid black;
+    height: 30px;
+}
+
+.action-buttons {
+    text-align: center;
+}
+
+.pick-color-button {
+    background-color: var(--acc1-color);
+    color: var(--acc2-color);
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+.pick-color-button:hover {
+    background-color: gray;
+}
+
+
+.color-table {
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    border: solid;
+    text-align: center;
+    border-collapse: collapse;
+    border: 5px solid black;
+}
+
+.color-table td {
     border: 5px solid black;
     height: 30px;
 }
@@ -56,7 +92,7 @@ main {
     width: 75px;
 }
 
-.draw-table{
+.draw-table {
     margin: auto;
     margin-top: 50px;
     width: 90%;
@@ -66,7 +102,7 @@ main {
     border: 5px solid black;
 }
 
-.draw-table td, .draw-table td {
+.draw-table td {
     border: 5px solid black;
     width: 50px;
     height: 50px;

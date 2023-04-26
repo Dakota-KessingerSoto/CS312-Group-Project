@@ -9,7 +9,7 @@ class ColorDBModel extends \Model {
     public static function add_color($name, $color) {
         // This just finds the next largest id in the database table
         // If the table is empty it sets the first id to 1
-        $id = ColorDB::largest_id()[0]['id'];
+        $id = ColorDBModel::largest_id()[0]['id'];
         if ($id == NULL) {
             $id = 1;
         } else {

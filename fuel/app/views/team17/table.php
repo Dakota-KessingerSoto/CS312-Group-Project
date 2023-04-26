@@ -43,40 +43,106 @@
     
     <!-- Color Adding, Editing, Removing -->
     <table class="action-table">
-    <form method="POST" class="action-buttons">
-        <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
-        <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
-        <tr>
-        <td><button type="submit" name="action" value="add"     class="pick-color-button">ADD</button></td>
-        <td><button type="submit" name="action" value="edit"    class="pick-color-button">EDIT</button></td>
-        <td><button type="submit" name="action" value="delete"  class="pick-color-button">DELETE</button></td>
-        </tr>
-    </form>
-    <form method="POST">
-        <?php if(isset($_POST['action'])): ?>
-            <?php if ($_POST['action']=="add"): ?>
-                <th><tr><td> ADD COLOR TABLE </td></tr></th>
-                <tr><td> Color Name </td><td> Color </td></tr>
-                <tr><td><input type="text" name="add-color-name" value=""/></td>
-                <td><input type="color" name="add-color" value="#ff0000"/></td></tr>
-                <tr><td><button type="submit" name="action" value="add"     class="pick-color-button">ADD</button></td></tr>
-            <?php elseif ($_POST['action']=="edit"): ?>
-                <th><tr><td> EDIT COLOR TABLE </td></tr></th>
-                <tr><td> Color Name </td><td> Color </td></tr>
-                <tr><td><select name="edit-color">;
-                <?php foreach ($colors_choices as $color) { echo "<option value=\"$color\""; {echo "selected";} echo ">$color</option>"; } ?>
-                </select></td>
-                <td><input type="color" name="add-color" value="#ff0000"/></td></tr>
-                <tr><td><button type="submit" name="action" value="edit" class="pick-color-button">EDIT</button></td></tr>
-            <?php elseif ($_POST['action']=="delete"): ?>
-                <th><tr><td> DELETE COLOR TABLE </td></tr></th>
-                <tr><td> Color Name </td></tr>
-                <tr><td><select name="delete-color">;
-                <?php foreach ($colors_choices as $color) { echo "<option value=\"$color\""; {echo "selected";} echo ">$color</option>"; } ?>
-                </select></td></tr>
-                <tr><td><button type="submit" name="action" value="delete" class="pick-color-button">DELETE</button></td></tr>    
-            <?php endif; ?>
-    </form>
+        <form method="POST" class="action-buttons">
+            <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
+            <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
+            <tr>
+                <td>
+                    <button type="submit" name="action" value="add"     class="pick-color-button">ADD</button>
+                </td>
+                <td>
+                    <button type="submit" name="action" value="edit"    class="pick-color-button">EDIT</button>
+                </td>
+                <td>
+                    <button type="submit" name="action" value="delete"  class="pick-color-button">DELETE</button>
+                </td>
+            </tr>
+        </form>
+        <form method="POST">
+            <?php if(isset($_POST['action'])): ?>
+                <?php if ($_POST['action']=="add"): ?>
+                    <th>
+                        <tr>
+                            <td> ADD COLOR TABLE </td>
+                        </tr>
+                    </th>
+                    <tr>
+                        <td> Color Name </td><td> Color </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="add-color-name" value=""/>
+                        </td>
+                    <td>
+                        <input type="color" name="add-color" value="#ff0000"/>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" name="add-new" value="add" class="pick-color-button">ADD</button>
+                        </td>
+                    </tr>
+                <?php elseif ($_POST['action']=="edit"): ?>
+                    <th>
+                        <tr>
+                            <td> EDIT COLOR TABLE </td>
+                        </tr>
+                    </th>
+                    <tr>
+                        <td> Color Name </td><td> Color </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="edit-color-id">;
+                            <?php foreach ($colors as $color) { 
+                                $text = $color['text'];
+                                $id = $color['id'];
+                                if($id > 10){
+                                    echo "<option value=\"$id\""; 
+                                    echo ">$text</option>"; 
+                                }
+                                } ?>
+                            </select>
+                        </td>
+                    <td>
+                        <input type="color" name="edit-color" value="#ff0000"/>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" name="edit" value="edit" class="pick-color-button">EDIT</button>
+                        </td>
+                    </tr>
+                <?php elseif ($_POST['action']=="delete"): ?>
+                    <th>
+                        <tr>
+                            <td> DELETE COLOR TABLE </td>
+                        </tr>
+                    </th>
+                    <tr>
+                        <td> Color Name </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="delete-color-name">;
+                            <?php foreach ($colors as $color) { 
+                                $text = $color['text'];
+                                $id = $color['id'];
+                                if($id > 10){
+                                    echo "<option value=\"$id\"";
+                                    echo ">$text </option>";
+                                } 
+                            } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" name="delete-color" value="delete" class="pick-color-button">DELETE</button>
+                        </td>
+                    </tr>    
+                <?php endif; ?>
+        </form>
     </table>
     <?php endif; ?>
 
@@ -90,10 +156,17 @@
         // Create drop down menu with each color
         echo "<tr><td><select name=\"colorSelect[]\" id=\"colorSelect{$row}\">";
         $index = 0;
-        foreach ($colors_choices as $color) {
-            echo "<option value=\"$color\""; if($row==$index){echo "selected";} echo ">$color</option>";
+        foreach ($colors as $color) {
+            $text = $color['text'];
+            $id = $color['id'];
+            echo "<option value=\"$id\""; 
+            if($row==$index){
+                echo "selected";
+            } 
+            echo ">$text</option>";
             $index += 1;
-        } $index = 0; 
+        } 
+        $index = 0; 
         echo "</select></td>";
         $choice_num = $row;
         if ($choice_num==0){

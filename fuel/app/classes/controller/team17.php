@@ -1,4 +1,5 @@
 <?php
+use \Model\ColorDBModel;
 class Controller_team17 extends Controller_Template
 {
 	
@@ -21,7 +22,10 @@ class Controller_team17 extends Controller_Template
 	}
 	public function action_table()
 	{
-		$data = array();
+		$data = array(
+			'colors' => ColorDBModel::read_colors(),
+            'coor_count' => ColorDBModel::color_count()
+		);
 
 		$submittedInit = "FALSE";
 		if (isset($_POST['numRows'])){

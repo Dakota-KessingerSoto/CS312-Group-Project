@@ -66,9 +66,22 @@ class Controller_team17 extends Controller_Template
 			}
 		}
 
+		if (isset($_POST['add-color-name']) && isset($_POST['add-color'] )&& isset($_POST['add-new'])) {
+            ColorDBModel::add_color($_POST['add-color-name'], $_POST['add-color']);
+        }
+
+		if (isset($_POST['delete-color-name']) && isset($_POST['delete-color'] )) {
+            ColorDBModel::delete_colors($_POST['delete-color-name']);
+        }
+		
+		if (isset($_POST['edit-color-id']) && isset($_POST['edit-color']) && isset($_POST['edit'])) {
+            ColorDBModel::edit_colors($_POST['edit-color-id'], $_POST['edit-color']);
+        }
+
 		$this->template->style = ('table.css');
 		$this->template->heading = ('Color Picking Table');
 		$this->template->content = View::forge('team17/table', $data);
 	}
+
 }
 ?>

@@ -79,7 +79,9 @@
                 </tr>
                     <tr>
                         <td>
-                            <button type="submit" name="add-new" value="add" class="pick-color-button">ADD</button>
+                        <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
+                        <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
+                        <button type="submit" name="add-new" value="add" class="pick-color-button">ADD</button>
                         </td>
                     </tr>
                 <?php elseif ($_POST['action']=="edit"): ?>
@@ -94,14 +96,12 @@
                     <tr>
                         <td>
                             <select name="edit-color-id">;
-                            <?php foreach ($colors as $color) { 
-                                $text = $color['text'];
-                                $id = $color['id'];
-                                if($id > 10){
-                                    echo "<option value=\"$id\""; 
-                                    echo ">$text</option>"; 
-                                }
-                                } ?>
+                            <?php
+                            // Color Drop Down Menu Column
+                            foreach ($colors as $color) {
+                                echo "<option value=\"",$color['id'],"\">",$color['name'],"</option>";
+                            }
+                            ?>
                             </select>
                         </td>
                     <td>
@@ -110,6 +110,8 @@
                 </tr>
                     <tr>
                         <td>
+                            <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
+                            <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
                             <button type="submit" name="edit" value="edit" class="pick-color-button">EDIT</button>
                         </td>
                     </tr>
@@ -124,25 +126,26 @@
                     </tr>
                     <tr>
                         <td>
-                            <select name="delete-color-name">;
-                            <?php foreach ($colors as $color) { 
-                                $text = $color['text'];
-                                $id = $color['id'];
-                                if($id > 10){
-                                    echo "<option value=\"$id\"";
-                                    echo ">$text </option>";
-                                } 
-                            } ?>
+                            <select name="delete-color-id">;
+                            <?php
+                            // Color Drop Down Menu Column
+                            foreach ($colors as $color) {
+                                echo "<option value=\"",$color['id'],"\">",$color['name'],"</option>";
+                            }
+                            ?>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button type="submit" name="delete-color" value="delete" class="pick-color-button">DELETE</button>
+                        </select>
+                            <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
+                            <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
+                            <button type="submit" name="delete" value="delete" class="pick-color-button">DELETE</button>
                         </td>
-                    </tr>    
+                    </tr>
                 <?php endif; ?>
-        </form>
+            </form>
     </table>
     <?php endif; ?>
 
@@ -154,26 +157,24 @@
     echo "<tr><td> Colors </td><td> Choice </td><td> Coordinates </tr>";
     for ($row = 0; $row < $colorCnt; $row++){
         // Create drop down menu with each color
+        // Color Drop Down Menu Column
         echo "<tr><td><select name=\"colorSelect[]\" id=\"colorSelect{$row}\">";
         $index = 0;
         foreach ($colors as $color) {
-            $text = $color['text'];
-            $id = $color['id'];
-            echo "<option value=\"$id\""; 
-            if($row==$index){
-                echo "selected";
-            } 
-            echo ">$text</option>";
+            echo "<option value=\"",$color['hex_value'],"\""; if($row==$index){echo "selected";} echo ">",$color['name'],"</option>";
             $index += 1;
-        } 
-        $index = 0; 
+        } $index = 0; 
         echo "</select></td>";
+        
+        // Color Box Slector
         $choice_num = $row;
         if ($choice_num==0){
-            echo "<td class=\"select_col\"><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\" checked></td>";
+            echo "<td class=\"select_col selected\" style=\"background-color: ",$colors[$row]['hex_value'],"\"><input type=\"hidden\" name=\"choice\" value=\"{$choice_num}choice\"></td>";
         } else {
-            echo "<td class=\"select_col\"><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\"></td>";
+            echo "<td class=\"select_col\" style=\"background-color: ",$colors[$row]['hex_value'],"\"><input type=\"hidden\" name=\"choice\" value=\"{$choice_num}choice\"></td>";
         }
+
+        // Color Codinates
         echo "<td class=\"cords\"><input type=\"hidden\" name=\"colorChoice[]\" value=\"\"><label></label></td>";
         echo "</tr>";
     }

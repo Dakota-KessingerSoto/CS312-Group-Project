@@ -70,8 +70,8 @@ class Controller_team17 extends Controller_Template
             ColorDBModel::add_color($_POST['add-color-name'], $_POST['add-color']);
         }
 
-		if (isset($_POST['delete-color-name']) && isset($_POST['delete-color'] )) {
-            ColorDBModel::delete_colors($_POST['delete-color-name']);
+		if (isset($_POST['delete-color-id']) && isset($_POST['delete'] )) {
+            ColorDBModel::delete_colors($_POST['delete-color-id']);
         }
 		
 		if (isset($_POST['edit-color-id']) && isset($_POST['edit-color']) && isset($_POST['edit'])) {

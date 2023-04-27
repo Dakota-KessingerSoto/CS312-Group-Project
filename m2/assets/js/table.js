@@ -8,7 +8,7 @@ $(document).ready(function() {
     // get previous value in fown down menu by lisiting for mousedown event
     var prevValue = "";
     $('select[name="colorSelect[]"]').mousedown(function() {
-        prevValue = $(this).val();
+        prevValue = $(this).find(':selected').attr('id');
     });
     
     $('select[name="colorSelect[]"]').change( function() {
@@ -17,31 +17,31 @@ $(document).ready(function() {
         var selected_colors = $('select[name="colorSelect[]"]').toArray();
         var dulplicate = false;
         // Check if color is already slected
-        selected_colors.forEach(function(element) { if (newValue.val()==element.value && newValue.attr('id')!=element.id){dulplicate = true;} });
+        selected_colors.forEach(function(element) { if (newValue.find(':selected').attr('id')==element.value && newValue.attr('id')!=element.id){dulplicate = true;} });
         if (dulplicate == true){
             newValue.css('color', 'red');
             setTimeout(() => {
                 newValue.css('color', 'black');
-                newValue.val(prevValue);
+                newValue.find(':selected').attr('id', prevValue);
             }, 500);
         } else {
             // Change color of previous cells
             if (prevValue==selectedColor){
-                selectedColor = newValue.val();
+                selectedColor = newValue.find(':selected').attr('id');
             }
             $('td').filter(function() {
                 if ($(this).css('background-color') == colorNameToRgb(prevValue)) {
-                    $(this).css('background-color', colorNameToRgb(newValue.val()));
+                    $(this).css('background-color', colorNameToRgb(newValue.find(':selected').attr('id')));
                 };
             })
-            $(this).closest('tr').find('.select_col').css('background-color', colorNameToRgb(newValue.val()));
+            $(this).closest('tr').find('.select_col').css('background-color', colorNameToRgb(newValue.find(':selected').attr('id')));
         }
     });
     
     // Detect if radio button is changed and set change to selected color--------
     var selectedColor = $('.selected').css('background-color');
     $('.select_col').click(function() {
-        selectedColor = $(this).closest('tr').find('select').val();
+        selectedColor = $(this).closest('tr').find('select').find(':selected').attr('id');
         $('.selected').removeClass('selected');
         $(this).addClass('selected');
     });
@@ -55,7 +55,7 @@ $(document).ready(function() {
             $(this).css('background-color', selectedColor);
         }
     });
-
+    
 
     // Detect when cell in main table is click and add cordinate to top table-------
     var color_count = $('.color-table tbody tr').length-1;

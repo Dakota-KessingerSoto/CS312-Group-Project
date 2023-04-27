@@ -161,7 +161,7 @@
         echo "<tr><td><select name=\"colorSelect[]\" id=\"colorSelect{$row}\">";
         $index = 0;
         foreach ($colors as $color) {
-            echo "<option value=\"",$color['hex_value'],"\""; if($row==$index){echo "selected";} echo ">",$color['name'],"</option>";
+            echo "<option value=\"",$color['name'],"\" id=\"",$color['hex_value'],"\""; if($row==$index){echo "selected";} echo ">",$color['name'],"</option>";
             $index += 1;
         } $index = 0; 
         echo "</select></td>";

@@ -13,13 +13,13 @@
             <label for="numRows">Enter Row/Column Number:</label>
             <input type="number" id="numRows" name="numRows" placeholder="1-26"><br>
             <label for="numColors">Enter Colors Number:</label>
-            <input type="number" id="numColors" name="numColors" placeholder="1-10"><br>
+            <input type="number" id="numColors" name="numColors" placeholder="1-<?=$max_colors_count?>"><br>
             <input type="submit" value="Submit"><br>
         </fieldset>
         </form>
         <!-- Display error message if user inputs invalid input-->
         <?php if (isset($val) and $val == "FALSE"): ?>
-            <p class="errMessage" > Be sure to enter a number 1-26 in rows/columns and a number 1-10 in colors. </p>
+            <p class="errMessage" > Be sure to enter a number 1-26 in rows/columns and a number 1-<?=$max_colors_count?> in colors. </p>
         <?php endif; ?>
     </table>
 

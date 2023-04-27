@@ -28,6 +28,8 @@ class Controller_team17 extends Controller_Template
 		);
 
 		$submittedInit = "FALSE";
+		$max_colors_count = ColorDBModel::color_count()-1;
+		$data['max_colors_count'] = $max_colors_count;
 		if (isset($_POST['numRows'])){
 			$submittedInit = "TRUE";
 			$rowCheck = 'false';
@@ -41,7 +43,7 @@ class Controller_team17 extends Controller_Template
 			$submittedInit = "TRUE";
 			$colorCheck = 'false';
 			$colorCount = $_POST['numColors'];
-			if(is_numeric($colorCount) && $colorCount > 0 && $colorCount < 11){
+			if(is_numeric($colorCount) && $colorCount > 0 && $colorCount <= $max_colors_count){
 				$colorCheck = 'true';
 			}
 		}

@@ -89,11 +89,12 @@ main {
 }
 
 .color-table tbody tr td:first-child{
-    width: 200px;
+    width: 150px!important;
 }
 .color-table tbody tr td.select_col{
-    width: 200px;
+    width: 200px!important;
 }
+
 
 .draw-table {
     margin: auto;
@@ -138,4 +139,8 @@ main {
 
 .printview-button:hover {
     background-color: var(--acc3-color);
+}
+
+td.selected {
+    border: 6px solid rgb(207, 204, 204)!important;;
 }

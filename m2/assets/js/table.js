@@ -32,6 +32,10 @@ $(document).ready(function() {
             })
         }
     });
+
+    $('#logo').click(function(){
+        window.location = "./index";
+    });
     
     // Detect if radio button is changed and set change to selected color--------
     var selectedColor = "red";

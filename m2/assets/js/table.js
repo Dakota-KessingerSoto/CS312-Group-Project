@@ -62,18 +62,18 @@ $(document).ready(function() {
         var selected_choice = $('.selected input').attr('value');
         var choice_num = parseInt(selected_choice, 10);
         var cord = $(this).attr('id');
-        
-        // Check if cordinate was already in different choice cell and remove it
-        for(let i=0; i<cordinates.length; i++){
-            for(let element of cordinates[i]){
-                if (element==cord){
-                    cordinates[i].delete(element);
+        if($(this).attr('id')!="title"){
+            // Check if cordinate was already in different choice cell and remove it
+            for(let i=0; i<cordinates.length; i++){
+                for(let element of cordinates[i]){
+                    if (element==cord){
+                        cordinates[i].delete(element);
+                    }
                 }
             }
-        }
-        
-        // Add clicked cordnate to selected color choice
-        cordinates[choice_num].add(cord);
+            
+            // Add clicked cordnate to selected color choice
+            cordinates[choice_num].add(cord);
 
         // Change label to reflect changes
         var newLabel = "";

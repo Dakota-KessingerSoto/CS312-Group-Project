@@ -24,24 +24,126 @@
     </table>
 
 <?php else: ?>
-    <!-- Print View Logo and Header -->
+    <!-- Print View Logo and Header and Print View Table -->
     <?php
         // Check to see if print view button click and change style sheet
         if(isset($_POST['printview-button'])) { 
             echo Asset::css('printview.css');
             echo "<img src=\"",(Asset::get_file('printlogo.png', 'img')),"\" alt=\"Print Logo\">";
             echo "<h1> ColorPalettePro </h1>";
+            // Print View Color Picking Table
+            if (isset($selColors)&&isset($colChoice))
+            echo "<table class=\"print-color-table\">";
+                    for ($row=0; $row<$colorCnt ;$row++){
+                        echo "<tr><td>$selColors[$row]</td><td>$colChoice[$row]</td></tr>";
+                    }
+            echo "</table>";
         }
     ?>
-    <!-- Print View Color Picking Table -->
-    <?php if (isset($selColors)&&isset($colChoice)): ?>
-        <table class="print-color-table">
-            <?php
-            for ($row=0; $row<$colorCnt ;$row++){
-                echo "<tr><td>$selColors[$row]</td><td>$colChoice[$row]</td></tr>";
-            }
-            ?>
-        </table>
+    
+    <!-- Color Adding, Editing, Removing -->
+    <table class="action-table">
+        <form method="POST" class="action-buttons">
+            <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
+            <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
+            <tr>
+                <td>
+                    <button type="submit" name="action" value="add"     class="pick-color-button">ADD</button>
+                </td>
+                <td>
+                    <button type="submit" name="action" value="edit"    class="pick-color-button">EDIT</button>
+                </td>
+                <td>
+                    <button type="submit" name="action" value="delete"  class="pick-color-button">DELETE</button>
+                </td>
+            </tr>
+        </form>
+        <form method="POST">
+            <?php if(isset($_POST['action'])): ?>
+                <?php if ($_POST['action']=="add"): ?>
+                    <th>
+                        <tr>
+                            <td> ADD COLOR TABLE </td>
+                        </tr>
+                    </th>
+                    <tr>
+                        <td> Color Name </td><td> Color </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="add-color-name" value=""/>
+                        </td>
+                    <td>
+                        <input type="color" name="add-color" value="#ff0000"/>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" name="add-new" value="add" class="pick-color-button">ADD</button>
+                        </td>
+                    </tr>
+                <?php elseif ($_POST['action']=="edit"): ?>
+                    <th>
+                        <tr>
+                            <td> EDIT COLOR TABLE </td>
+                        </tr>
+                    </th>
+                    <tr>
+                        <td> Color Name </td><td> Color </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="edit-color-id">;
+                            <?php foreach ($colors as $color) { 
+                                $text = $color['text'];
+                                $id = $color['id'];
+                                if($id > 10){
+                                    echo "<option value=\"$id\""; 
+                                    echo ">$text</option>"; 
+                                }
+                                } ?>
+                            </select>
+                        </td>
+                    <td>
+                        <input type="color" name="edit-color" value="#ff0000"/>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" name="edit" value="edit" class="pick-color-button">EDIT</button>
+                        </td>
+                    </tr>
+                <?php elseif ($_POST['action']=="delete"): ?>
+                    <th>
+                        <tr>
+                            <td> DELETE COLOR TABLE </td>
+                        </tr>
+                    </th>
+                    <tr>
+                        <td> Color Name </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="delete-color-name">;
+                            <?php foreach ($colors as $color) { 
+                                $text = $color['text'];
+                                $id = $color['id'];
+                                if($id > 10){
+                                    echo "<option value=\"$id\"";
+                                    echo ">$text </option>";
+                                } 
+                            } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" name="delete-color" value="delete" class="pick-color-button">DELETE</button>
+                        </td>
+                    </tr>    
+                <?php endif; ?>
+        </form>
+    </table>
     <?php endif; ?>
 
 
@@ -60,7 +162,8 @@
         foreach ($colors_name_choices as $color) {
             echo "<option value=\"$color\""; if($row==$index){echo "selected";} echo ">$color</option>";
             $index += 1;
-        } $index = 0; 
+        } 
+        $index = 0; 
         echo "</select></td>";
         
         // Color Box Slector
@@ -94,9 +197,11 @@
         echo "</tr>";}
     ?>
     </table>
-        <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
-        <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
-        <button type="submit" name="printview-button" class="printview-button">Print View</button>
+
+    <!-- Form Submission and Print View Button -->
+    <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
+    <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
+    <button type="submit" name="printview-button" class="printview-button">Print View</button>
     </form>
     
 <?php endif; ?>

@@ -9,7 +9,7 @@ class ColorDBModel extends \Model {
     public static function add_color($name, $color) {
         // This just finds the next largest id in the database table
         // If the table is empty it sets the first id to 1
-        $id = ColorDB::largest_id()[0]['id'];
+        $id = ColorDBModel::largest_id()[0]['id'];
         if ($id == NULL) {
             $id = 1;
         } else {
@@ -25,11 +25,17 @@ class ColorDBModel extends \Model {
     public static function delete_colors($color_ids) {
         // Use DB::delete to remove an item. Remember to add ->execute() to the end so that it runs the query
         // Here is a basic outline:
-        DB::delete('colors')->where('id','in',$color_ids)->execute();
+        DB::delete('colors')->where('id','=',$color_ids)->execute();
     }
 
     public static function update_color() {
         return false;
+    }
+
+    public static function edit_colors($id, $color) {
+        DB::update('colors')->set(array(
+            'hex_value' => $color,
+        ))->where('id', '=', $id)->execute();
     }
 
     public static function read_colors() {

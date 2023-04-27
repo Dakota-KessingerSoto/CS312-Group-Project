@@ -53,7 +53,10 @@ main {
 }
 
 .color-table tbody tr td:first-child{
-    width: 75px;
+    width: 150px!important;
+}
+.color-table tbody tr td.select_col{
+    width: 200px!important;
 }
 
 .draw-table{
@@ -99,4 +102,8 @@ main {
 
 .printview-button:hover {
     background-color: var(--acc3-color);
+}
+
+td.selected {
+    border: 6px solid gray!important;;
 }

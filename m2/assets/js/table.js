@@ -1,7 +1,9 @@
 $(document).ready(function() {
     if($('html').css('filter')!="grayscale(1)"){
-    // When dropdown value change check for dulication and restore if not---------
-    // Get previous value in fown down menu by lisiting for mousedown event
+    
+
+    // When dropdown value change check for dulication and restore if not
+    // get previous value in fown down menu by lisiting for mousedown event
     var prevValue;
     $('select[name="colorSelect[]"]').mousedown(function() {
         prevValue = $(this).val();
@@ -21,7 +23,7 @@ $(document).ready(function() {
                 newValue.val(prevValue);
             }, 500);
         } else {
-            // Cheange color of previous cells
+            // Change color of previous cells
             if (prevValue==selectedColor){
                 selectedColor = newValue.val();
             }
@@ -30,13 +32,16 @@ $(document).ready(function() {
                     $(this).css('background-color', colorNameToRgb(newValue.val()));
                 };
             })
+            $(this).closest('tr').find('.select_col').css('background-color', colorNameToRgb(newValue.val()));
         }
     });
     
     // Detect if radio button is changed and set change to selected color--------
-    var selectedColor = "red";
-    $('input[type="radio"]').click(function() {
+    var selectedColor = $('.selected').css('background-color');
+    $('.select_col').click(function() {
         selectedColor = $(this).closest('tr').find('select').val();
+        $('.selected').removeClass('selected');
+        $(this).addClass('selected');
     });
 
     // Detect when cell in main table is click and change color to selected color-------
@@ -49,13 +54,12 @@ $(document).ready(function() {
     });
 
 
-    // Detect when cell in main table is click and add cordinate to radio-------
+    // Detect when cell in main table is click and add cordinate to top table-------
     var color_count = $('.color-table tbody tr').length-1;
     let cordinates = Array.from(Array(color_count), () => new Set());
-    $('.draw-table td').hover(function() {
-        //var selected_choice = $('input[type="radio"]:checked').closest('td').find('label').text();
+    $('.draw-table td').click(function() {
         // everytime a cell is colored add it to an array for its selected color
-        var selected_choice = $('input[type="radio"]:checked').attr('value');
+        var selected_choice = $('.selected input').attr('value');
         var choice_num = parseInt(selected_choice, 10);
         var cord = $(this).attr('id');
         
@@ -73,13 +77,15 @@ $(document).ready(function() {
 
         // Change label to reflect changes
         var newLabel = "";
-        $("input[type='radio']").each(function(i) {
+        $(".select_col").each(function(i) {
             cordinates[i] = sortSet(cordinates[i]);
             for(let element of cordinates[i]){
                 newLabel = newLabel+element+" ";
             }
-            $(this).closest('td').find('label').text(newLabel);
-            $(this).closest('td').find("input[type='hidden'").val(newLabel);
+            console.log($(this).closest('tr').find("td.cords input").val(newLabel));
+            console.log($(this).closest('tr').find('td.cords label').text(newLabel));
+            $(this).closest('tr').find("td.cords input").val(newLabel);
+            $(this).closest('tr').find('td.cords label').text(newLabel);
             newLabel = "";
         });
     });

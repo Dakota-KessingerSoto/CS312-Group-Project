@@ -49,24 +49,30 @@
     <form method="POST">
     <table class="color-table">
     <?php 
-    $colors_choices = array("red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal");
-    echo "<tr><td> Colors </td><td> Choice </td></tr>";
+    echo "<tr><td> Colors </td><td> Choice </td><td> Coordinates </tr>";
     for ($row = 0; $row < $colorCnt; $row++){
         // Create drop down menu with each color
+        // Color Drop Down Menu Column
         echo "<tr><td><select name=\"colorSelect[]\" id=\"colorSelect{$row}\">";
+        $colors_name_choices = array_column($colors, 'name');
+        $colors_hex_choices = array_column($colors, 'hex_value');
         $index = 0;
-        foreach ($colors_choices as $color) {
+        foreach ($colors_name_choices as $color) {
             echo "<option value=\"$color\""; if($row==$index){echo "selected";} echo ">$color</option>";
             $index += 1;
         } $index = 0; 
         echo "</select></td>";
+        
+        // Color Box Slector
         $choice_num = $row;
         if ($choice_num==0){
-            echo "<td><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\" checked>";
+            echo "<td class=\"select_col selected\" style=\"background-color: ",$colors_hex_choices[$row],"\"><input type=\"hidden\" name=\"choice\" value=\"{$choice_num}choice\"></td>";
         } else {
-            echo "<td><input type=\"radio\" name=\"choice\" value=\"{$choice_num}choice\">";
+            echo "<td class=\"select_col\" style=\"background-color: ",$colors_hex_choices[$row],"\"><input type=\"hidden\" name=\"choice\" value=\"{$choice_num}choice\"></td>";
         }
-        echo "<label for = {$choice_num}choice></label><input type=\"hidden\" name=\"colorChoice[]\" value = \"foobar\"</td>";
+
+        // Color Codinates
+        echo "<td class=\"cords\"><input type=\"hidden\" name=\"colorChoice[]\" value=\"\"><label></label></td>";
         echo "</tr>";
     }
     ?>

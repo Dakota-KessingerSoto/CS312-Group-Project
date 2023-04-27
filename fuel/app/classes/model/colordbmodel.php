@@ -37,7 +37,7 @@ class ColorDBModel extends \Model {
         // The queries from DB just return an object that needs to be executed, then to get the results
         // You can use as_array to get them all at once or other methods to iterate over the results of the query
         // by row
-        return DB::query('SELECT id, name as text FROM `colors`', DB::SELECT)->execute()->as_array();
+        return DB::select('*')->from('colors')->execute()->as_array();
     }
 
     public static function color_count() {

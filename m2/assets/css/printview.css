@@ -22,7 +22,7 @@ body, main{
     height: 11in!important;
 }
 
-.navbar, header, table.color-table, .printview-button{
+.navbar, header, table.color-table, .printview-button, .action-table{
 	display: none;
 }
 

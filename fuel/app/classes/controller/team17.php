@@ -22,14 +22,15 @@ class Controller_team17 extends Controller_Template
 	}
 	public function action_table()
 	{
-		$data = array(
-			'colors' => ColorDBModel::read_colors(),
-            'color_count' => ColorDBModel::color_count()
-		);
-
+		$data = array();
 		$submittedInit = "FALSE";
 		$max_colors_count = ColorDBModel::color_count()-1;
 		$data['max_colors_count'] = $max_colors_count;
+		if($submittedInit == false){
+			ColorDBModel::clear_colors();
+			ColorDBModel::create_colors();
+		}
+
 		if (isset($_POST['numRows'])){
 			$submittedInit = "TRUE";
 			$rowCheck = 'false';
@@ -63,6 +64,8 @@ class Controller_team17 extends Controller_Template
 				$data['val'] = "TRUE";
 				$data['rowCnt'] = $rowCount;
 				$data['colorCnt'] = $colorCount;
+				$data['colors'] = ColorDBModel::read_colors();
+				$data['color_count'] = ColorDBModel::color_count();
 			} else {
 				$data['val'] = "FALSE";
 			}

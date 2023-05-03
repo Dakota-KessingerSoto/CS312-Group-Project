@@ -2,14 +2,12 @@
 namespace Model;
 use \DB;
 
-// Todo DB Skeleton Code
-
 class ColorDBModel extends \Model {
+    //$color_in_database = ((!(DB::select('*')->from('colors')->where('hex_value', '=', $color)->limit(1)->execute()->count() > 0))&&(!(DB::select('*')->from('colors')->where('name', '=', $name)->limit(1)->execute()->count() > 0)));
     public static function create_colors() {
-        // Create a database with the preset colors
-        // Catch the exception
         try
         {
+            // Create a database with the preset colors
             \DBUtil::create_table(
                 'colors',
                 array(
@@ -76,30 +74,31 @@ class ColorDBModel extends \Model {
             insert into colors values (9, 'black', '#000000');
             insert into colors values (10, 'teal', '#008080');
             */
-            //echo "<script>alert('DATABASE CREATED');</script>";
+            //echo "<script>alert('TABLE CREATED');</script>";
         }
         catch(\Database_Exception $e)
         {
-            // Creation failed...
-            echo "<script>alert('DATABASE NOT CREATED: $e');</script>";
+            //echo "<script>alert('TABLE NOT CREATED: $e');</script>";
         }
     }
     public static function clear_colors() {
-        // Clear and delete the data base table colors
         // Catch the exception
         try
         {
+            // Clear and delete the data base table colors
             \DBUtil::drop_table('colors');
+            //echo "<script>alert('TABLE DELETED/CLEARED');</script>";
         }
         catch(\Database_Exception $e)
         {
-            echo "<script>alert('DATABASE NOT CREATED: $e');</script>";
+            //echo "<script>alert('TABLE NOT DELETED/CLEARED: $e');</script>";
         }
     }
 
     public static function add_color($name, $color) {
-        // Check that no color in the table has the same hex or name value
-        if ((!(DB::select('*')->from('colors')->where('hex_value', '=', $color)->limit(1)->execute()->count() > 0))&&(!(DB::select('*')->from('colors')->where('name', '=', $name)->limit(1)->execute()->count() > 0))) {
+        try
+        {
+            // Check that no color in the table has the same hex or name value
             // This just finds the next largest id in the database table
             // If the table is empty it sets the first id to 1
             $id = ColorDBModel::largest_id()[0]['id'];
@@ -113,43 +112,83 @@ class ColorDBModel extends \Model {
                 'name' => $name,
                 'hex_value' => $color,
             ))->execute();
-        } else {
-            echo "<script>alert('color already in table');</script>";
+            //echo "<script>alert('COLOR ADDED');</script>";
         }
-        
-        
-        
+        catch(\Database_Exception $e)
+        {
+            //echo "<script>alert('COLOR NOT ADDED: $e');</script>";
+        }
+
     }
 
     public static function delete_colors($color_id) {
-        // Use DB::delete to remove an item. Remember to add ->execute() to the end so that it runs the query
-        DB::delete('colors')->where('id','=',$color_id)->execute();
-    }
-
-    public static function update_color() {
-        return false;
+        try
+        {
+            // Use DB::delete to remove an item. Remember to add ->execute() to the end so that it runs the query
+            DB::delete('colors')->where('id','=',$color_id)->execute();
+            //echo "<script>alert('COLOR DELETED');</script>";
+        }
+        catch(\Database_Exception $e)
+        {
+            //echo "<script>alert('COLOR NOT DELETED: $e');</script>";
+        }
     }
 
     public static function edit_colors($id, $color) {
-        DB::update('colors')->set(array(
-            'hex_value' => $color,
-        ))->where('id', '=', $id)->execute();
+        try
+        {
+            // Edit hex vbalue in database
+            DB::update('colors')->set(array(
+                'hex_value' => $color,
+            ))->where('id', '=', $id)->execute();
+            //echo "<script>alert('COLOR EDITED');</script>";
+        }
+        catch(\Database_Exception $e)
+        {
+            //echo "<script>alert('COLOR NOT EDITED: $e');</script>";
+        }
     }
 
     public static function read_colors() {
-        // Notice that this query ends in execute then as_array
-        // The queries from DB just return an object that needs to be executed, then to get the results
-        // You can use as_array to get them all at once or other methods to iterate over the results of the query
-        // by row
-        return DB::select('*')->from('colors')->execute()->as_array();
+        try
+        {
+            // Notice that this query ends in execute then as_array
+            // The queries from DB just return an object that needs to be executed, then to get the results
+            // You can use as_array to get them all at once or other methods to iterate over the results of the query
+            // by row
+            // Read colors from color table into an array for front end
+            return DB::select('*')->from('colors')->execute()->as_array();
+            //echo "<script>alert('COLORS READ');</script>";
+        }
+        catch(\Database_Exception $e)
+        {
+            //echo "<script>alert('COLORS NOT READ: $e');</script>";
+        }
     }
 
     public static function color_count() {
-        return DB::count_records('colors') ;
+        try
+        {
+            // Get count of rows from color table
+            return DB::count_records('colors') ;
+            //echo "<script>alert('COLOR COUNT FOUND');</script>";
+        }
+        catch(\Database_Exception $e)
+        {
+            //echo "<script>alert('COLOR COUNT NOT FOUND: $e');</script>";
+        }
     }
 
     private static function largest_id() {
-        return DB::query('SELECT MAX(id) as id FROM `colors`')->execute()->as_array();
+        try
+        {
+            return DB::query('SELECT MAX(id) as id FROM `colors`')->execute()->as_array();
+            //echo "<script>alert('LARGEST ID FOUND');</script>";
+        }
+        catch(\Database_Exception $e)
+        {
+            //echo "<script>alert('LARGEST ID NOT FOUND: $e');</script>";
+        }
     }
 }
 ?>

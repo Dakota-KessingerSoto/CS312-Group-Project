@@ -9,6 +9,8 @@ class Controller_team17 extends Controller_Template
 		$this->template->style = ('home.css');
 		$this->template->heading = ('ColorPalettePro Homepage');
 		$this->template->content = View::forge('team17/index', $data);
+		ColorDBModel::clear_colors();
+		ColorDBModel::create_colors();
 	}
 
 	
@@ -26,10 +28,6 @@ class Controller_team17 extends Controller_Template
 		$submittedInit = "FALSE";
 		$max_colors_count = ColorDBModel::color_count()-1;
 		$data['max_colors_count'] = $max_colors_count;
-		if($submittedInit == false){
-			ColorDBModel::clear_colors();
-			ColorDBModel::create_colors();
-		}
 
 		if (isset($_POST['numRows'])){
 			$submittedInit = "TRUE";
@@ -73,14 +71,20 @@ class Controller_team17 extends Controller_Template
 
 		if (isset($_POST['add-color-name']) && isset($_POST['add-color'] )&& isset($_POST['add-new'])) {
             ColorDBModel::add_color($_POST['add-color-name'], $_POST['add-color']);
+			$data['colors'] = ColorDBModel::read_colors();
+			$data['color_count'] = ColorDBModel::color_count();
         }
 
 		if (isset($_POST['delete-color-id']) && isset($_POST['delete'] )) {
             ColorDBModel::delete_colors($_POST['delete-color-id']);
+			$data['colors'] = ColorDBModel::read_colors();
+			$data['color_count'] = ColorDBModel::color_count();
         }
 		
 		if (isset($_POST['edit-color-id']) && isset($_POST['edit-color']) && isset($_POST['edit'])) {
             ColorDBModel::edit_colors($_POST['edit-color-id'], $_POST['edit-color']);
+			$data['colors'] = ColorDBModel::read_colors();
+			$data['color_count'] = ColorDBModel::color_count();
         }
 
 		$this->template->style = ('table.css');

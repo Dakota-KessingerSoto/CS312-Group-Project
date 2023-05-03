@@ -16,16 +16,6 @@
         </div>
     </div>
     <div class="member">
-        <img src="<?php echo Asset::get_file('anthony.jpg', 'img'); ?>" alt="Anthony's Photo" width="450" height="300">
-        <div>
-            <h3>Anthony Sargent</h3>
-            <hr>
-            <p>Hello I'm Anthony Sargent. I'm a junior at CSU and I'm working toward my Bachelor's in Computer Science.
-                During my spare time I like to play video games, skateboard, watch movies, and work out.
-        </div>
-        </p>
-    </div>
-    <div class="member">
         <img src="<?php echo Asset::get_file('john.jpg', 'img'); ?>" alt="John's Photo" width="450" height="300">
         <div>
         <h3>John McFall</h3>
@@ -34,6 +24,16 @@
                 Security. I have lived in Colorado my whole life and I enjoy snowboarding during the winter. Some of my other interests are music, wakeboarding, 
                 and video games. I am also a member of CSU's Counter Strike Global Offensive team.</p>
         </div>
+    </div>
+    <div class="member">
+        <img src="<?php echo Asset::get_file('anthony.jpg', 'img'); ?>" alt="Anthony's Photo" width="450" height="300">
+        <div>
+            <h3>Anthony Sargent</h3>
+            <hr>
+            <p>Hello I'm Anthony Sargent. I'm a junior at CSU and I'm working toward my Bachelor's in Computer Science.
+                During my spare time I like to play video games, skateboard, watch movies, and work out.
+        </div>
+        </p>
     </div>
     <div class="member">
         <img src="<?php echo Asset::get_file('kevin.jpg', 'img'); ?>" alt="Kevin's Photo" width="450" height="300">

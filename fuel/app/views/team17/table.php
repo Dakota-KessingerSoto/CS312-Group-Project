@@ -99,7 +99,9 @@
                             <?php
                             // Color Drop Down Menu Column
                             foreach ($colors as $color) {
-                                echo "<option value=\"",$color['id'],"\">",$color['name'],"</option>";
+                                if($color['id'] > 40){
+                                    echo "<option value=\"",$color['id'],"\">",$color['name'],"</option>";
+                                }
                             }
                             ?>
                             </select>
@@ -130,7 +132,9 @@
                             <?php
                             // Color Drop Down Menu Column
                             foreach ($colors as $color) {
-                                echo "<option value=\"",$color['id'],"\">",$color['name'],"</option>";
+                                if($color['id'] > 40) {
+                                    echo "<option value=\"",$color['id'],"\">",$color['name'],"</option>";
+                                }
                             }
                             ?>
                             </select>

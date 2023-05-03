@@ -117,6 +117,7 @@ class ColorDBModel extends \Model {
         catch(\Database_Exception $e)
         {
             //echo "<script>alert('COLOR NOT ADDED: $e');</script>";
+            throw new \Exception($e);
         }
 
     }
@@ -146,6 +147,7 @@ class ColorDBModel extends \Model {
         catch(\Database_Exception $e)
         {
             //echo "<script>alert('COLOR NOT EDITED: $e');</script>";
+            throw new \Exception($e);
         }
     }
 

@@ -41,6 +41,10 @@
         }
     ?>
     
+    <!-- Error Message -->
+    <h2 id="error_text" class="errMessage" style="color: red; text-align: center; margin: -25px;"> <?= $error_text ?> </h2>
+    
+
     <!-- Color Adding, Editing, Removing -->
     <table class="action-table">
         <form method="POST" class="action-buttons">
@@ -48,86 +52,63 @@
             <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
             <tr>
                 <td>
-                    <button type="submit" name="action" value="add"     class="pick-color-button">ADD</button>
+                    <button type="submit" id="add" name="action" value="add"     class="pick-color-button">ADD</button>
                 </td>
                 <td>
-                    <button type="submit" name="action" value="edit"    class="pick-color-button">EDIT</button>
+                    <button type="submit" id="edit" name="action" value="edit"    class="pick-color-button">EDIT</button>
                 </td>
                 <td>
-                    <button type="submit" name="action" value="delete"  class="pick-color-button">DELETE</button>
+                    <button type="submit" id="delete" name="action" value="delete"  class="pick-color-button">DELETE</button>
                 </td>
             </tr>
         </form>
+        </table >
         <form method="POST">
+            <table class="action-table" style="margin-top: 10px; width: 400px;">
+            <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
+            <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <?php if(isset($_POST['action'])): ?>
                 <?php if ($_POST['action']=="add"): ?>
-                    <th>
-                        <tr>
-                            <td> ADD COLOR TABLE </td>
-                        </tr>
-                    </th>
+                    <script> $('button[id="add"]').css('background-color', 'gray'); </script>
                     <tr>
-                        <td> Color Name </td><td> Choose Color Below </td>
+                        <td>
+                            Add Color: <input type="text" name="add-color-name" value=""/> <input type="color" name="add-color" value="#ff0000"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" name="add-color-name" value=""/>
-                        </td>
-                    <td>
-                        <input type="color" name="add-color" value="#ff0000"/>
-                    </td>
-                </tr>
-                    <tr>
-                        <td>
-                        <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
-                        <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
-                        <button type="submit" name="add-new" value="add" class="pick-color-button">ADD</button>
+                        <button type="submit" name="add-new" value="add" class="pick-color-button"> SUBMIT </button>
                         </td>
                     </tr>
                 <?php elseif ($_POST['action']=="edit"): ?>
-                    <th>
-                        <tr>
-                            <td> EDIT COLOR TABLE </td>
-                        </tr>
-                    </th>
-                    <tr>
-                        <td> Color Name </td><td> Choose Color Below </td>
-                    </tr>
+                    <script> $('button[id="edit"]').css('background-color', 'gray'); </script>
                     <tr>
                         <td>
+                            Edit Color: 
                             <select name="edit-color-id">;
                             <?php
                             // Color Drop Down Menu Column
                             foreach ($colors as $color) {
-                                if($color['id'] > 40){
+                                if($color['id'] > 40) {
                                     echo "<option value=\"",$color['id'],"\">",$color['name'],"</option>";
                                 }
                             }
                             ?>
                             </select>
+                            <input type="color" name="edit-color" value="#ff0000"/>
                         </td>
-                    <td>
-                        <input type="color" name="edit-color" value="#ff0000"/>
-                    </td>
-                </tr>
+                    </tr>
                     <tr>
                         <td>
-                            <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
-                            <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
-                            <button type="submit" name="edit" value="edit" class="pick-color-button">EDIT</button>
+                            <button type="submit" name="edit" value="edit" class="pick-color-button"> SUBMIT </button>
                         </td>
                     </tr>
                 <?php elseif ($_POST['action']=="delete"): ?>
-                    <th>
-                        <tr>
-                            <td> DELETE COLOR TABLE </td>
-                        </tr>
-                    </th>
-                    <tr>
-                        <td> Color Name </td>
-                    </tr>
+                    <script> $('button[id="delete"]').css('background-color', 'gray'); </script>
                     <tr>
                         <td>
+                            Delete Color:  
                             <select name="delete-color-id">;
                             <?php
                             // Color Drop Down Menu Column
@@ -142,15 +123,12 @@
                     </tr>
                     <tr>
                         <td>
-                        </select>
-                            <input type="hidden" name="numRows" value="<?php echo $rowCnt; ?>">
-                            <input type="hidden" name="numColors" value="<?php echo $colorCnt; ?>">
-                            <button type="submit" name="delete" value="delete" class="pick-color-button">DELETE</button>
+                            <button type="submit" name="delete" value="delete" class="pick-color-button"> SUBMIT </button>
                         </td>
                     </tr>
                 <?php endif; ?>
             </form>
-    </table>
+        </table>
     <?php endif; ?>
 
 

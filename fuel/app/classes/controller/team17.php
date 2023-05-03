@@ -25,6 +25,7 @@ class Controller_team17 extends Controller_Template
 	public function action_table()
 	{
 		$data = array();
+		$data['error_text'] = "";
 		$submittedInit = "FALSE";
 		$max_colors_count = ColorDBModel::color_count()-1;
 		$data['max_colors_count'] = $max_colors_count;
@@ -70,21 +71,29 @@ class Controller_team17 extends Controller_Template
 		}
 
 		if (isset($_POST['add-color-name']) && isset($_POST['add-color'] )&& isset($_POST['add-new'])) {
-            ColorDBModel::add_color($_POST['add-color-name'], $_POST['add-color']);
-			$data['colors'] = ColorDBModel::read_colors();
-			$data['color_count'] = ColorDBModel::color_count();
+			try {
+				ColorDBModel::add_color($_POST['add-color-name'], $_POST['add-color']);
+				$data['colors'] = ColorDBModel::read_colors();
+				$data['color_count'] = ColorDBModel::color_count();
+			} catch (Exception $e) {
+				$data['error_text'] = "Color Already In Table";
+			}
         }
 
 		if (isset($_POST['delete-color-id']) && isset($_POST['delete'] )) {
-            ColorDBModel::delete_colors($_POST['delete-color-id']);
+			ColorDBModel::delete_colors($_POST['delete-color-id']);
 			$data['colors'] = ColorDBModel::read_colors();
 			$data['color_count'] = ColorDBModel::color_count();
         }
 		
 		if (isset($_POST['edit-color-id']) && isset($_POST['edit-color']) && isset($_POST['edit'])) {
+			try {
             ColorDBModel::edit_colors($_POST['edit-color-id'], $_POST['edit-color']);
 			$data['colors'] = ColorDBModel::read_colors();
 			$data['color_count'] = ColorDBModel::color_count();
+			} catch (Exception $e) {
+				$data['error_text'] = "Color Already In Table";
+			}
         }
 
 		$this->template->style = ('table.css');

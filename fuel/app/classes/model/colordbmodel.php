@@ -112,11 +112,11 @@ class ColorDBModel extends \Model {
                 'name' => $name,
                 'hex_value' => $color,
             ))->execute();
-            echo "<script>alert('COLOR ADDED');</script>";
+            //echo "<script>alert('COLOR ADDED');</script>";
         }
         catch(\Database_Exception $e)
         {
-            echo "<script>alert('COLOR NOT ADDED: $e');</script>";
+            //echo "<script>alert('COLOR NOT ADDED: $e');</script>";
         }
 
     }
@@ -126,11 +126,11 @@ class ColorDBModel extends \Model {
         {
             // Use DB::delete to remove an item. Remember to add ->execute() to the end so that it runs the query
             DB::delete('colors')->where('id','=',$color_id)->execute();
-            echo "<script>alert('COLOR DELETED');</script>";
+            //echo "<script>alert('COLOR DELETED');</script>";
         }
         catch(\Database_Exception $e)
         {
-            echo "<script>alert('COLOR NOT DELETED: $e');</script>";
+            //echo "<script>alert('COLOR NOT DELETED: $e');</script>";
         }
     }
 
@@ -141,11 +141,11 @@ class ColorDBModel extends \Model {
             DB::update('colors')->set(array(
                 'hex_value' => $color,
             ))->where('id', '=', $id)->execute();
-            echo "<script>alert('COLOR EDITED');</script>";
+            //echo "<script>alert('COLOR EDITED');</script>";
         }
         catch(\Database_Exception $e)
         {
-            echo "<script>alert('COLOR NOT EDITED: $e');</script>";
+            //echo "<script>alert('COLOR NOT EDITED: $e');</script>";
         }
     }
 

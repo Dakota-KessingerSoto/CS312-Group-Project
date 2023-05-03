@@ -67,7 +67,7 @@
                         </tr>
                     </th>
                     <tr>
-                        <td> Color Name </td><td> Color </td>
+                        <td> Color Name </td><td> Choose Color Below </td>
                     </tr>
                     <tr>
                         <td>
@@ -91,7 +91,7 @@
                         </tr>
                     </th>
                     <tr>
-                        <td> Color Name </td><td> Color </td>
+                        <td> Color Name </td><td> Choose Color Below </td>
                     </tr>
                     <tr>
                         <td>

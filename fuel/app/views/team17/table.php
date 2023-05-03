@@ -41,6 +41,10 @@
         }
     ?>
     
+    <!-- Error Message -->
+    <h2 id="error_text" class="errMessage" style="color: red; text-align: center; margin: -25px;"> <?= $error_text ?> </h2>
+    
+
     <!-- Color Adding, Editing, Removing -->
     <table class="action-table">
         <form method="POST" class="action-buttons">
@@ -70,8 +74,8 @@
                     <tr>
                         <td>
                             Add Color: <input type="text" name="add-color-name" value=""/> <input type="color" name="add-color" value="#ff0000"/>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                         <button type="submit" name="add-new" value="add" class="pick-color-button"> SUBMIT </button>
@@ -90,9 +94,9 @@
                             }
                             ?>
                             </select>
-                        <input type="color" name="edit-color" value="#ff0000"/>
-                    </td>
-                </tr>
+                            <input type="color" name="edit-color" value="#ff0000"/>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <button type="submit" name="edit" value="edit" class="pick-color-button"> SUBMIT </button>
@@ -120,7 +124,7 @@
                     </tr>
                 <?php endif; ?>
             </form>
-    </table>
+        </table>
     <?php endif; ?>
 
 

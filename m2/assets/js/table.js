@@ -8,37 +8,44 @@ $(document).ready(function() {
     // get previous value in fown down menu by lisiting for mousedown event
     var prevValue = "";
     $('select[name="colorSelect[]"]').mousedown(function() {
-        prevValue = $(this).find(':selected').attr('id');
+        prevValue = $(this).find(':selected');
     });
     
     $('select[name="colorSelect[]"]').change( function() {
         // Check if it is already been chosen and warn then change back
+        var newColor = $('option:selected', this).attr('id');
+        var prevColor = prevValue.attr('id');
         var newValue = $(this);
-        var selected_colors = $('select[name="colorSelect[]"]').toArray();
         var dulplicate = false;
-        // Check if color is already slected
-        selected_colors.forEach(function(element) { if (newValue.find(':selected').attr('id')==element.value && newValue.attr('id')!=element.id){dulplicate = true;} });
+        $('select[name="colorSelect[]"]').each(function() {
+            // Check the new color does not amtch any color name already selected
+            if ($(newValue).val()==$(this).val()){
+                // Check the comparison color is not itself
+                if ($(newValue).attr('id')!=$(this).attr('id')){
+                    dulplicate = true;
+                }
+            }
+        });
+        // If found duplicate flash red adn change back to previous value
         if (dulplicate == true){
             newValue.css('color', 'red');
             setTimeout(() => {
                 newValue.css('color', 'black');
-                newValue.find(':selected').attr('id', prevValue);
+                newValue.val(prevValue.val());
             }, 500);
         } else {
+            // If not duplicate found change previous cells of same color and
             // Change color of previous cells
-            if (prevValue==selectedColor){
-                selectedColor = newValue.find(':selected').attr('id');
-            }
             $('td').filter(function() {
-                if ($(this).css('background-color') == colorNameToRgb(prevValue)) {
-                    $(this).css('background-color', colorNameToRgb(newValue.find(':selected').attr('id')));
+                if ($(this).css('background-color') == toRGB(prevColor)) {
+                    $(this).css('background-color', newColor);
                 };
             })
-            $(this).closest('tr').find('.select_col').css('background-color', colorNameToRgb(newValue.find(':selected').attr('id')));
+
         }
     });
     
-    // Detect if radio button is changed and set change to selected color--------
+    // Detect if choice button is changed and set change to selected color--------
     var selectedColor = $('.selected').css('background-color');
     $('.select_col').click(function() {
         selectedColor = $(this).closest('tr').find('select').find(':selected').attr('id');
@@ -95,7 +102,7 @@ $(document).ready(function() {
     }
 });
 
-function colorNameToRgb(colorName) {
+function toRGB(colorName) {
     // create an invisible dummy element
     var dummy = $('<div>').css('color', colorName).hide().appendTo('body');
     // get the color in RGB format

@@ -27,7 +27,7 @@ class Controller_team17 extends Controller_Template
 		$data = array();
 		$data['error_text'] = "";
 		$submittedInit = "FALSE";
-		$max_colors_count = ColorDBModel::color_count()-1;
+		$max_colors_count = ColorDBModel::color_count();
 		$data['max_colors_count'] = $max_colors_count;
 
 		if (isset($_POST['numRows'])){

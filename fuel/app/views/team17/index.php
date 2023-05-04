@@ -24,7 +24,7 @@
             <cite>- John Smith</cite>
         </blockquote>
         <blockquote>
-            <p>"The range of colors available and the ease of use make ColorPalettePro my go-to tool for all my design work."</p>
+            <p>"The range of colors available and the ease of use makes ColorPalettePro my go-to tool for all my design work."</p>
             <cite>- Sarah Johnson</cite>
         </blockquote>
     </section>

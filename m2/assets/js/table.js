@@ -16,28 +16,33 @@ $(document).ready(function() {
         var newColor = $('option:selected', this).attr('id');
         var prevColor = prevValue.attr('id');
         var newValue = $(this);
+        var dulplicate = false;
         $('select[name="colorSelect[]"]').each(function() {
             // Check the new color does not amtch any color name already selected
             if ($(newValue).val()==$(this).val()){
                 // Check the comparison color is not itself
                 if ($(newValue).attr('id')!=$(this).attr('id')){
-                    // If found duplicate flash red adn change back to previous value
-                    newValue.css('color', 'red');
-                    setTimeout(() => {
-                        newValue.css('color', 'black');
-                        newValue.val(prevValue.val());
-                    }, 500);
-                } else {
-                    // If not duplicate found change previous cells of same color and
-                    // Change color of previous cells
-                    $('td').filter(function() {
-                        if ($(this).css('background-color') == toRGB(prevColor)) {
-                            $(this).css('background-color', newColor);
-                        };
-                    });
+                    dulplicate = true;
                 }
             }
         });
+        // If found duplicate flash red adn change back to previous value
+        if (dulplicate == true){
+            newValue.css('color', 'red');
+            setTimeout(() => {
+                newValue.css('color', 'black');
+                newValue.val(prevValue.val());
+            }, 500);
+        } else {
+            // If not duplicate found change previous cells of same color and
+            // Change color of previous cells
+            $('td').filter(function() {
+                if ($(this).css('background-color') == toRGB(prevColor)) {
+                    $(this).css('background-color', newColor);
+                };
+            })
+
+        }
     });
     
     // Detect if choice button is changed and set change to selected color--------
